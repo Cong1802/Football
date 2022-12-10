@@ -1,0 +1,109 @@
+.wait-for-match {
+    color: red;
+}
+
+body,
+button,
+select,
+input {
+    font-family: Arial;
+    font-size: 15px;
+}
+
+input[type='submit'],
+button {
+    cursor: pointer!important;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ccc;
+}
+
+.mytable {
+    border-spacing: 0;
+}
+
+.mytable td,
+.mytable th {
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 5px;
+}
+
+.mytable th {
+    border-top: 1px solid #000;
+    background: #ccc;
+}
+
+.mytable th:last-child {
+    border-right: 1px solid #000;
+}
+
+.mytable td:last-child {
+    border-right: 1px solid #000;
+}
+
+.mytable tr:nth-child(2n + 1) {
+    background: #eee;
+}
+
+.bangdatsanchinh {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.bangdatsanchinh:hover {
+    color: orange;
+}
+
+.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.thongbao {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#formDatSan {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 450px;
+    height: 450px;
+    z-index: 100;
+    background: #eee;
+    padding: 15px;
+    border: 0px solid #000;
+    box-shadow: 5px 5px 20px #000;
+    display: none;
+    border-radius: 10px;
+}
+
+#formDatSan td {
+    vertical-align: center;
+    padding-top: 5px;
+}
+
+#grayscreen {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 0.7;
+    z-index: 99;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#datsan_themkhach {
+    display: block;
+}
