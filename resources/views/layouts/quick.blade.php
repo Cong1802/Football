@@ -1,14 +1,14 @@
     <!--============== TOP datsannhanh ============-->
-    <section id="datsannhanh" class="section-padding">
+    <section id="datsannhanh" class="section-padding container">
         <div class="container">
-            <div class="row">
+            <div class="row shadown py-5">
                 <div class="col-sm-12">
                     <div class="page-heading">
-                        <h2>Sân bóng DHNT FOOTBALL</h2>
-                        <hr class="heading-line" />
+                        <h3 class="font-weight-bold text-shadow">Sân bóng 28Sport</h3>
+                        <span class="animate-border mr-auto ml-auto mb-4"></span>
                     </div>
                     <div class="row">
-                        <div class="swiper py-5 mySwiper">
+                        <div class="swiper py-3 mySwiper">
                             <div class="swiper-wrapper">
                                 <?php foreach($list_pitch as $key => $value): ?>
                                 <div class="swiper-slide">
@@ -30,6 +30,7 @@
                                 </div>
                                 <?php endforeach ?>
                             </div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>

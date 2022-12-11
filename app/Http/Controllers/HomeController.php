@@ -58,6 +58,9 @@ class HomeController extends Controller
         $search = DB::table('tbl_pitch')
         ->join('tbl_admin','tbl_admin.id','=','tbl_pitch.pitch_manager')
         ->where('tbl_pitch.pitch_name','like','%'.$keywords.'%')->get();
+        $count = DB::table('tbl_pitch')
+        ->join('tbl_admin','tbl_admin.id','=','tbl_pitch.pitch_manager')
+        ->where('tbl_pitch.pitch_name','like','%'.$keywords.'%')->count();
         if($city != 0)
         {
             $search = DB::table('tbl_pitch')

@@ -1,44 +1,47 @@
 @extends('layout')
 
 @section('main_content')
-
-
-
-       <!--=================== PAGE-COVER =================-->
-    <section class="page-cover dashboard">
+<section class="container">
+    <div class="tab-content">
+      <div class="meta py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1 class="page-title">Kết quả tìm kiếm đối thủ</h1>
-                    <ul class="breadcrumb">
-                        <li> <a href="{{URL::to('/')}}"><i class="fa fa-home"></i> Trang chủ</a></li>
-                        <li class="active">Kết quả tìm kiếm</li>
-                    </ul>
-                </div>
-                <!-- end columns -->
-            </div>
-            <!-- end row -->
+          <div class="text-lg-left d-none d-md-block mb-2">
+            <img src="https://www.sporta.vn/assets/wordmark_orange-ed66bc5b0e0947731a85c89881eccaae39d86b653850da31181ad841b9c9cdd2.svg" alt="Sporta" style="height: 50px;">
+         </div>
+         <div class="text-center text-lg-left d-md-block">
+          <h4 class="display-5 font-weight-bold text-shadow">
+            CÁP KÈO NHANH CHÓNG - TÌM ĐỐI DỄ DÀNG
+          </h4>
+        </div>
+        <div class="mb-2">
+          <h6 class="text-left">Tham gia cùng <strong class="text-secondary" id="user_count" number="91370">91370</strong> người chơi khác ngay!</h6>
+          <div class="d-flex">
+            <a href="https://bit.ly/sporta-cap-keo-tim-doi"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-appstore-0ac658e90248e413db2bdc584e50b25b06a8229f6a74efb816b93194d0491829.svg"></a>
+            <a href="https://bit.ly/sporta-timdoi-android"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-googleplaystore-18c9b8d2140c5ad8657c670f05036c5a62760da182f1d8cbe8c40c467c7f2b4b.svg"></a>
+          </div>
+        </div>
         </div>
         <!-- end container -->
-    </section>
-    <!-- end page-cover -->
-
-    <div class="d-flex justify-content-between container mt-5 align-items-center flex-column flex-md-row mb-4">
-        <div class="mr-3">
-            Có <b> {{$count}} </b> kết quả tìm kiếm</b>
-        </div>
       </div>
+    </div>
+  </section>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a class="heading-text" href="#"><ion-icon name="home-sharp"></ion-icon> Home</a></li>
+      <li class="breadcrumb-item"><a class="heading-text" href="#">Sân bóng</a></li>
+    </ol>
+  </nav>
+  <div class="d-flex justify-content-between container align-items-center flex-column flex-md-row mb-4">
+
+  </div>
     <!--===== INNERPAGE-WRAPPER ====-->
-    <section class="innerpage-wrapper">
+    <section class="innerpage-wrapper mb-5">
         <div id="team-listing" class="innerpage-section-padding">
             <div class="container">
                 <div class="row">
-
                     <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
                         <div class="side-bar-block filter-block">
-                            <h3>Lọc kết quả</h3>
-                            <p>Tìm kiếm theo địa điểm</p>
-
+                            <h5 class="heading-text"><ion-icon name="search-sharp"></ion-icon> Tìm kiếm theo địa điểm</h5>
                             <nav class="filter-team">
                                 <ul class="filter-team-list">
                                     <li class="filter-team-item filter-team-item--active">
@@ -79,6 +82,11 @@
                     </div>
                     <!-- end columns -->
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
+                        @if(isset($_GET['keyword']))
+                        <div class="mb-3">
+                            Có <b> {{$count}} </b> kết quả tìm kiếm</b>
+                        </div>
+                        @endif
                         <ul>
                     @foreach($search as $key => $pitch)
         
@@ -90,14 +98,13 @@
                                 </div>
                                 <div class="p-1 m-2 venue-item-details">
                                   <div class="venue-item__name venue-item__link mb-1">
-                                    <a href="{{ URL::to('/booking/'.$pitch->pitch_id) }}" class="text-decoration-none">{{ $pitch->pitch_name }}</a>
+                                    <a href="{{ URL::to('/booking/'.$pitch->pitch_id) }}" class="text-decoration-none heading-text"><h5>{{ $pitch->pitch_name }}</h5></a>
                                   </div>
                                   <div class="venue-item__address venue-item__link mb-2">
-                                    <i class="fas fa-map-marker-alt"></i> {{ $pitch->pitch_address.', '.street($pitch->pitch_street)->_name.', '.ward($pitch->pitch_ward)->_name.', '.district($pitch->pitch_district)->_name.', '.city($pitch->pitch_city)->cit_name}}
+                                    <ion-icon name="location-sharp"></ion-icon> {{ $pitch->pitch_address.', '.street($pitch->pitch_street)->_name.', '.ward($pitch->pitch_ward)->_name.', '.district($pitch->pitch_district)->_name.', '.city($pitch->pitch_city)->cit_name}}
                                   </div>
                                   <div class="d-flex align-items-center">
-                                    <div class="fas fa-mobile-alt mr-2"></div>
-                                        <span class="text-muted phone-number">{{ $pitch->phone }}</span>
+                                        <span class="text-muted phone-number"><ion-icon name="call-sharp"></ion-icon> {{ $pitch->phone }}</span>
                                   </div>
                                 </div>
                               </div>
@@ -118,59 +125,16 @@
     </section>
     <!-- end innerpage-wrapper -->
     <style>
-        .venue-item__wrapper {
-            display: flex;
-            width: 100%;
-        }
-        .venue-item__main {
-            display: flex;
-            width: 85%;
-            height: 140px;
-        }
-        .venue-item-image {
-    width: 20%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.venue-item__link {
-    text-decoration: none;
-}
 
-.venue-item__name {
-    font-size: 20px;
-    text-transform: uppercase;
-    color: orange;
-}
-.venue-item-image img {
-    height: 100%;
-    max-width: 100%;
-    width: auto;
-}
-
-.img-fluid {
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-}
-        .venue-item-actions {
-            width: 15%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .shadow {
-            box-shadow: 0 0 1rem rgb(0 0 0 / 15%) !important;
-        }
-        .select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 0px !important;
-}
     </style>
-@include('layouts.count')
 @endsection
+@push('css')
+    <style>
+        .select2-container--default .select2-selection--single {
+            border:none !important;
+        }
+    </style>
+@endpush
 @push('js')
     <script>
         function search()

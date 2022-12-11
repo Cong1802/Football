@@ -1,29 +1,36 @@
 @extends('layout')
 
 @section('main_content')
-
-
-
-    <!--=================== PAGE-COVER =================-->
-    <section style="background-image: url(&quot;https://www.sporta.vn/assets/default_venue_0-be9661c93168f3e7e041490927476f582d3f441c4a8f1e57bce38c077b8a3e3c.jpg&quot;); background-position: bottom; background-size: cover;" class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover">
-        <div class="container overlay-content">
-            <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end container">
-                <div class="text-white mb-4 mb-lg-0">
-                    <h1 class="text-shadow verified text-left orange-text">Lịch sử đặt sân</h1>
-                    <p class="mb-1 d-flex align-items-center">
-                        <ion-icon name="star-outline"></ion-icon>
-                        <span class="ml-1"><a href="#seeReview" class="orange-text" style="text-decoration: none;">Chưa có đánh giá</a></span>
-                    </p>
-                    <p class="mb-1 d-flex align-items-center">
-                        <ion-icon name="alert-circle-outline"></ion-icon>
-                        <a href="https://www.sporta.vn/users/sign_in" class="orange-text" onclick="alert('Bạn cần đăng nhập để báo lỗi')" aria-pressed="true">Báo lỗi</a>
-                    </p>
-                    <div class="fb-like justify-contet-end d-flex mt-3 fb_iframe_widget" data-href="https://www.sporta.vn/vinh-thanh-sport" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=1761051974180267&amp;container_width=336&amp;href=https%3A%2F%2Fwww.sporta.vn%2Fvinh-thanh-sport&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=small"><span style="vertical-align: bottom; width: 150px; height: 28px;"><iframe name="f95b08c5480b94" width="1000px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v5.0/plugins/like.php?action=like&amp;app_id=1761051974180267&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df36dad5364090c%26domain%3Dwww.sporta.vn%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.sporta.vn%252Ff39803a4338f07%26relation%3Dparent.parent&amp;container_width=336&amp;href=https%3A%2F%2Fwww.sporta.vn%2Fvinh-thanh-sport&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=small" style="border: none; visibility: visible; width: 150px; height: 28px;" class=""></iframe></span></div>
-                </div>
-            </div>
+<section class="container">
+    <div class="tab-content">
+      <div class="meta py-5">
+        <div class="container">
+          <div class="text-lg-left d-none d-md-block mb-2">
+            <img src="https://www.sporta.vn/assets/wordmark_orange-ed66bc5b0e0947731a85c89881eccaae39d86b653850da31181ad841b9c9cdd2.svg" alt="Sporta" style="height: 50px;">
+         </div>
+         <div class="text-center text-lg-left d-md-block">
+          <h4 class="display-5 font-weight-bold text-shadow">
+            CÁP KÈO NHANH CHÓNG - TÌM ĐỐI DỄ DÀNG
+          </h4>
         </div>
-    </section>
-    <!-- end page-cover -->
+        <div class="mb-2">
+          <h6 class="text-left">Tham gia cùng <strong class="text-secondary" id="user_count" number="91370">91370</strong> người chơi khác ngay!</h6>
+          <div class="d-flex">
+            <a href="https://bit.ly/sporta-cap-keo-tim-doi"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-appstore-0ac658e90248e413db2bdc584e50b25b06a8229f6a74efb816b93194d0491829.svg"></a>
+            <a href="https://bit.ly/sporta-timdoi-android"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-googleplaystore-18c9b8d2140c5ad8657c670f05036c5a62760da182f1d8cbe8c40c467c7f2b4b.svg"></a>
+          </div>
+        </div>
+        </div>
+        <!-- end container -->
+      </div>
+    </div>
+</section>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="heading-text" href="#"><ion-icon name="home-sharp"></ion-icon> Home</a></li>
+        <li class="breadcrumb-item"><a class="heading-text" href="#">Lịch sử đặt sân</a></li>
+    </ol>
+</nav>
 
 {{-- <p>Sau khi được duyệt xin hãy kiểm tra bên thông tin đặt sân</p> --}}
 
@@ -31,11 +38,11 @@
     <section class="innerpage-wrapper">
         <div id="team-listing" class="innerpage-section-padding">
             <div class="container">
-                <div class="row mb-5">
+                <div class="d-flex mb-5">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 content-side">
                     <?php $i=1; ?>
                     @foreach($booking_history as $key => $booking_history_info)
-                        <div class="list-block main-block f-list-block">
+                        <div class="list-block f-list-block">
                             <div class="list-content">                           
                                 <div class="list-info f-list-info">
                                         <?php 
@@ -123,7 +130,7 @@
                         <!-- end row -->
                     </div>
                 </div>
-                <span>{!!$booking_history->links()!!}</span>
+                <div class="mb-5 d-flex justify-content-center">{!!$booking_history->links()!!}</div>
                 <!-- end row -->
             </div>
             <!-- end container -->
@@ -131,6 +138,4 @@
         <!-- end team-listing -->
     </section>
     <!-- end innerpage-wrapper -->
-
-@include('layouts.count')
 @endsection

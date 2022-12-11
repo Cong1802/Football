@@ -208,8 +208,9 @@
     border-top: 1px solid #e1e1e1;
     position: absolute;
     top: 0px;
-    left: 20px;
+    left: 0px;
     right: 20px;
+    width: 100%;
 }
 
 .filter-team-item--active .filter-team-item__link::before {
@@ -239,8 +240,8 @@
 }
 
 .side-bar .filter-block {
-    padding: 33px 0px 25px 25px;
-    border-radius: 2px;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .lteam .support-block {

@@ -1658,7 +1658,7 @@
    ----------------------------------------------------- */
 
 .ftr-top-grey {
-    background: #231f20;
+    background: #fff;
 }
 
 .ftr-top-black {
@@ -1670,18 +1670,9 @@
 }
 
 #footer.ftr-heading-o .footer-heading {
-    color: #43a047;
+    color: #7082a7 
 }
 
-#footer.ftr-heading-w .footer-heading {
-    color: white;
-}
-
-#footer-top.ftr-text-white,
-#footer-top.ftr-text-white p,
-#footer-top.ftr-text-white a {
-    color: white;
-}
 
 #footer-top.ftr-text-grey,
 #footer-top.ftr-text-grey p,
@@ -1690,9 +1681,8 @@
 }
 
 .footer-widget.ftr-about .social-links li .fa {
-    color: #939598;
+    color:#1d9bf0 !important;
 }
-
 .footer-widget.ftr-about .social-links li .fa:hover {
     color: #43a047;
 }
@@ -1739,13 +1729,18 @@
 #footer-bottom p,
 #footer-bottom a,
 #footer-bottom .line {
-    color: #979797;
+    color: #00ad6f;
+    font-size: 12px;
+    font-weight:600
 }
 
 #footer-bottom li:first-child:after {
-    background: #979797;
+    background: #00ad6f;
 }
-
+#footer-bottom
+{
+    background:#343a40 !important
+}
 
 /* -----------------------------------------------------
 		Page Cover

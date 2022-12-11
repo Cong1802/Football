@@ -26,7 +26,7 @@
        </section>
     <!-- end page-cover -->
     <!--==== INNERPAGE-WRAPPER =====-->
-    <section class="innerpage-wrapper">
+    <section class="innerpage-wrapper container my-5">
         <div id="thank-you" class="innerpage-section-padding">
             <div class="container">
                 <div class="row">

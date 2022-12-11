@@ -1,84 +1,67 @@
 @extends('layout')
 @section('main_content')
     <!--========================= FLEX SLIDER =====================-->
-    <section class="flexslider-container" id="flexslider-container-2">
-        <div class="flexslider slider" id="slider-2">
-            <ul class="slides">
-                <li class="item-1 back-size" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url({{('public/frontend/images/field1.jpg')}}) 50% 15%;background-size:cover;background-repeat: no-repeat;background-position: center;height:100%;">
-                    <div class="meta">
-                        <div class="container">
-                            <h2>DHNT FOOTBALL FIELD</h2>
-                            <p>Liên hệ số điện thoại 0905692030.</p>
-                        </div>
-                        <!-- end container -->
-                    </div>
-                    <!-- end meta -->
-                </li>
-                <!-- end item-1 -->
-
-                <li class="item-2 back-size" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url({{('public/frontend/images/field2.jpg')}}) 50% 15%;background-size:cover;background-repeat: no-repeat;background-position: center;height:100%;">
-                    <div class=" meta">
-                        <div class="container">
-                            <h2>FRIENDLY FOOTBALL</h2>
-                            <p>Giao hữu bóng đá để nâng cao sức khoẻ, trình độ và gặp gỡ những người bạn.</p>
-                        </div>
-                        <!-- end container -->
-                    </div>
-                    <!-- end meta -->
-                </li>
-                <!-- end item-2 -->
-            </ul>
-        </div>
-        <div class="search-tabs" id="search-tabs-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="tab-content">
-                            <div id="TimDoiNhanh" class="tab-pane in active">
-                                <form action="{{URL::to('/search')}}" onsubmit="return false" autocomplete="off" method="POST">
-                                 {{csrf_field()}}
-                                    <div class="row">
-                                        <div class="col-xs-12 d-flex justify-content-between col-sm-12 col-md-12">
-                                            <div class="left-icon input-search">
-                                                <input type="text" class="form-control" name="keywords_submit" placeholder="Tìm kiếm quận huyện hoặc tên sân bóng">
-                                            </div>
-                                            <div class="left-icon select2-search">
-                                              <select onchange="change_address(this,'districts','ajaxGetListDistricts','Quận/ huyện','1')" id="select_city" name="pitch_city" class="form-control">
-                                                  <option disabled selected>Thành phố</option>
-                                                  <?php foreach($city as $key =>$value): ?>
-                                                  <option value="{{$value->cit_id}}">{{ $value->cit_name}}</option>
-                                                  <?php endforeach ?>
-                                              </select>
-                                            </div>
-                                            <div class="left-icon select2-search">
-                                              <select name="pitch_district" class="districts form-control">
-                                                <option disabled selected>Quận/ huyện</option>
-                                              </select>
-                                            </div>
-                                            <button type="submit" name="btn-search" class="btn btn-orange">Tìm kiếm</button>
-                                        </div>
-                                    </div>
-                                    <!-- end row -->
-                                </form>
-                            </div>
-                            <!-- end hotels -->
-
-                        </div>
-                        <!-- end tab-content -->
-
-                    </div>
-                    <!-- end columns -->
-                </div>
-                <!-- end row -->
+    <section class="container py-5">
+      <div class="tab-content">
+        <div class="meta py-5">
+          <div class="container">
+            <div class="text-lg-left d-none d-md-block mb-2">
+              <img src="https://www.sporta.vn/assets/wordmark_orange-ed66bc5b0e0947731a85c89881eccaae39d86b653850da31181ad841b9c9cdd2.svg" alt="Sporta" style="height: 50px;">
+           </div>
+           <div class="text-center text-lg-left d-md-block">
+            <h4 class="display-5 font-weight-bold text-shadow">
+              CÁP KÈO NHANH CHÓNG - TÌM ĐỐI DỄ DÀNG
+            </h4>
+          </div>
+          <div class="mb-2">
+            <h6 class="text-left">Tham gia cùng <strong class="text-secondary" id="user_count" number="91370">91370</strong> người chơi khác ngay!</h6>
+            <div class="d-flex">
+              <a href="https://bit.ly/sporta-cap-keo-tim-doi"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-appstore-0ac658e90248e413db2bdc584e50b25b06a8229f6a74efb816b93194d0491829.svg"></a>
+              <a href="https://bit.ly/sporta-timdoi-android"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-googleplaystore-18c9b8d2140c5ad8657c670f05036c5a62760da182f1d8cbe8c40c467c7f2b4b.svg"></a>
             </div>
-            <!-- end container -->
+          </div>
+          </div>
+          <!-- end container -->
         </div>
+          <div id="TimDoiNhanh" class="tab-pane in active">
+              <form action="{{URL::to('/search')}}" onsubmit="return false" autocomplete="off" method="POST">
+               {{csrf_field()}}
+                  <div class="row">
+                      <div class="col-xs-12 d-flex justify-content-between col-sm-12 col-md-12">
+                          <div class="left-icon input-search">
+                              <input type="text" class="form-control" name="keywords_submit" placeholder="Tìm kiếm quận huyện hoặc tên sân bóng">
+                          </div>
+                          <div class="left-icon select2-search-div">
+                            <select onchange="change_address(this,'districts','ajaxGetListDistricts','Quận/ huyện','1')" id="select_city" name="pitch_city" class="form-control">
+                                <option disabled selected>Thành phố</option>
+                                <?php foreach($city as $key =>$value): ?>
+                                <option value="{{$value->cit_id}}">{{ $value->cit_name}}</option>
+                                <?php endforeach ?>
+                            </select>
+                          </div>
+                          <div class="left-icon select2-search-div">
+                            <select name="pitch_district" class="districts form-control">
+                              <option disabled selected>Quận/ huyện</option>
+                            </select>
+                          </div>
+                          <button type="submit" name="btn-search" class="btn btn-orange">Tìm kiếm</button>
+                      </div>
+                  </div>
+                  <!-- end row -->
+              </form>
+          </div>
+          <!-- end hotels -->
+      </div>
     </section>
-    <section class="py-5 bg-gray-100">
-        <div class="container">
+    <div class="banner container">
+      <img src="https://xuanlongfc.com/images/background/background-image.jpeg">
+    </div>
+    <section class="py-5 bg-gray-100 container ">
+        <div class="shadown py-5">
           <div class="text-center pb-lg-4">
-            <h2>Tại sao lại cần DHNT FOOTBALL</h2>
-            <p class="subtitle text-secondary">Nền tảng đặt sân - tìm đối đầu tiên tại Việt Nam</p>
+            <h3 class="font-weight-bold text-shadow">Tại sao lại cần 28Sport</h3>
+            <p class="subtitle text-secondary">Nền tảng đặt sân bóng hàng đầu tại Việt Nam</p>
+            <span class="animate-border mr-auto ml-auto mb-4"></span>
           </div>
           <div class="row">
             <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -122,6 +105,11 @@
 @push('css')
 <link rel="stylesheet" href={{ asset("public/frontend/css/card.css")}}>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+<style>
+  .select2-container--default .select2-selection--single {
+      border:none !important;
+  }
+</style>
 @endpush
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -155,6 +143,10 @@
             spaceBetween: 20,
           },
         },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
       });
 
       function change_address(value1, value2, value3, value4, value5) {
@@ -173,6 +165,7 @@
                 },
   
                 success: function(response) {
+                  console.log(response);
                     var html = '<option value="">' + value4 + '</option>';
                     // var response = JSON.parse(response);
                     $.each(response, function(index, val) {
