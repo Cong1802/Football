@@ -48,14 +48,14 @@ class TimeSlotController extends Controller
     public function InsertTimeSlot(PriceTime $request)
     {
         $data = [
-            'time_start' => strtotime($request->time_st),
-            'time_end'   => strtotime($request->time_end),
+            'time_start' => strtotime($request->time_st." 18-02-1999"),
+            'time_end'   => strtotime($request->time_end." 18-02-1999"),
             'price' => $request->price,
             'pitch' => $request->pitch,
             'type' => $request->pitch_type,
         ];
         DB::table('tbl_price')->insert($data);
-        return redirect('admin/time-slot')->with('success','Thêm mới sân bóng thành công');
+        return redirect('admin/time-slot?pitch_type='.$request->pitch_type)->with('success','Thêm mới sân bóng thành công');
     }
     public function EditTime($time_id){
         $listPitch = DB::table('tbl_pitch')->get();
@@ -64,8 +64,8 @@ class TimeSlotController extends Controller
     }
     public function UpdateTime(PriceTime $request,$time_id){
         $data = [
-            'time_start' => strtotime($request->time_st),
-            'time_end'   => strtotime($request->time_end),
+            'time_start' => strtotime($request->time_st." 18-02-1999"),
+            'time_end'   => strtotime($request->time_end." 18-02-1999"),
             'price' => $request->price,
             'pitch' => $request->pitch,
         ];

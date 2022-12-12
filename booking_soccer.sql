@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 10, 2022 lúc 08:05 AM
+-- Thời gian đã tạo: Th12 12, 2022 lúc 09:55 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 7.4.30
 
@@ -1687,6 +1687,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('conguyen@gmail.com', '$2y$10$RYHSFD6wLiwYtL5m93PxE.Ggo/AU4qOhO3rDGttzsRIcw8IkOtUwu', '2022-12-12 08:44:39');
 
 -- --------------------------------------------------------
 
@@ -33485,11 +33492,12 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`id`, `email`, `password`, `name`, `phone`, `created_at`, `updated_at`, `admin_pitch`, `role`, `avt`, `city`, `district`, `ward`, `address`, `street`) VALUES
-(2, 'conguyen@gmail.com', '$2y$10$5pU722A7NX0oNkkipEnckuRpKgbwUQ5PicIN6OdHzcoJOQ8g8nBKa', 'Nguyễn Bá Công', '+84966990354', NULL, NULL, 20, 0, '', 1, 27, 374, 'số 39 ngõ 142 đường cổ nhuế', 7351),
-(4, 'admin@gmail.com', '$2y$10$eSZv8dBClnPkgtIX24o12e5KT34zKH3G4SGt1Vd4j8cQL4K5GZY.q', 'admin', '0934065565', NULL, NULL, 0, 1, '22', 0, 0, 0, '', 0),
-(6, 'admin4@gmail.com', '2d66d65e4add2a330ff470e1242bcc39', 'nguyễn văn ass', '0987654321', NULL, NULL, NULL, 0, '', 0, 0, 0, '', 0),
-(8, 'nvb@gmail.com', '$2y$10$5pU722A7NX0oNkkipEnckuRpKgbwUQ5PicIN6OdHzcoJOQ8g8nBKa', 'Nguyễn Văn B', '+84966990354', '2022-12-09 02:53:42', '2022-12-09 02:53:42', NULL, 0, '1670580732logoteam3.jpg', 1, 25, 330, 'số 39 ngõ 142 đường cổ nhuế', 7221),
-(9, 'nvc@gmail.com', '$2y$10$4Jx5WxxRoSsxioC7VbZKBOgvHC5wWjdBU96GwlCa0kvWV14tG3GNu', 'nguyễn văn C', '0987654321', '2022-12-09 02:53:56', '2022-12-09 02:53:56', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 'admin@gmail.com', '$2y$10$eSZv8dBClnPkgtIX24o12e5KT34zKH3G4SGt1Vd4j8cQL4K5GZY.q', 'Nguyễn Bá Công', '+84966990354', NULL, NULL, 0, 1, '1670835217logoteam3.jpg', 1, 25, 328, 'số 39 ngõ 142 đường cổ nhuế', 7221),
+(10, 'nva@gmail.com', '$2y$10$wcHWK9S4HWNFya2iHZD35e5NGilOE2/9gybBd4MxqBkMDsJWOEvKi', 'nguyễn văn a', '0987654321', '2022-12-11 19:26:16', '2022-12-11 20:13:33', 25, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'nvb@gmail.com', '$2y$10$zOQzA4qpi7xAuZJxMEZt0.A7Xd2ZOfxscy2Bw2B3HGpayVm6z3Riy', 'nguyễn văn B', '0987654321', '2022-12-11 19:26:30', '2022-12-11 20:13:41', 26, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 'nvc@gmail.com', '$2y$10$tJHjWBne8VeVHt3Oz.YQAOe36iCq7lIK3XfdlhwY12EZ4sQXozUEq', 'nguyễn văn C', '0987654321', '2022-12-11 19:26:40', '2022-12-11 20:13:48', 27, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 'conguyen@gmail.com', '$2y$10$MP4IbPtmDPjonjjabl1hMefIjCeNVwz4XIAgw.3d7o5AyVovfp.je', 'Nguyễn Bá Công', '0987654321', '2022-12-11 19:26:58', '2022-12-11 19:43:46', 28, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'conguyen22@gmail.com', '4af41580b76d237917de4c0934895e72', 'okok', '0987654321', '2022-12-11 19:27:24', '2022-12-11 19:27:44', 29, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -33506,18 +33514,23 @@ CREATE TABLE `tbl_booking` (
   `booking_time` int(11) DEFAULT NULL,
   `booking_date` int(11) DEFAULT NULL,
   `booking_time_cr` int(11) DEFAULT NULL,
-  `booking_status` int(11) DEFAULT NULL
+  `booking_status` int(11) DEFAULT NULL,
+  `booking_count_time` int(11) DEFAULT NULL,
+  `booking_phone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`booking_id`, `booking_user`, `booking_pitch`, `booking_pitch_type`, `booking_type`, `booking_time`, `booking_date`, `booking_time_cr`, `booking_status`) VALUES
-(18, 1, 20, NULL, 2, 24, 1670544000, 1670581609, 0),
-(19, 1, 20, 7, 2, 24, 1670544000, 1670581664, 1),
-(20, 1, 20, 7, 2, 24, 1670630400, 1670637339, 0),
-(21, 1, 20, 8, 2, 24, 1670716800, 1670642744, 0);
+INSERT INTO `tbl_booking` (`booking_id`, `booking_user`, `booking_pitch`, `booking_pitch_type`, `booking_type`, `booking_time`, `booking_date`, `booking_time_cr`, `booking_status`, `booking_count_time`, `booking_phone`) VALUES
+(22, 6, 28, 17, 2, 25, 1670803200, 1670814665, 3, 0, 987654321),
+(24, 6, 28, 17, 2, 26, 1670803200, 1670817491, 2, 0, 0),
+(25, 6, 28, 17, 2, 27, 1670803200, 1670817546, 1, 0, 0),
+(26, 6, 28, 17, 2, 26, 1670803200, 1670819229, 2, 1, 0),
+(27, 6, 28, 17, 2, 26, 1670803200, 1670819781, 2, 1, 0),
+(28, 6, 28, 17, 2, 26, 1670803200, 1670819855, 3, 1, 0),
+(29, 6, 28, 17, 2, 25, 1670889600, 1670820421, 0, NULL, 123456789);
 
 -- --------------------------------------------------------
 
@@ -33536,9 +33549,9 @@ CREATE TABLE `tbl_extension` (
 --
 
 INSERT INTO `tbl_extension` (`ex_id`, `ex_name`, `ex_time`) VALUES
-(1, 'Bóng dùng miễn phí', NULL),
-(2, 'Nước uống miễn phí', NULL),
-(5, 'Không cần đặt cọc', NULL);
+(9, 'Bóng dùng miễn phí', NULL),
+(10, 'Nước uống miễn phí', NULL),
+(11, 'Không cần đặt cọc', NULL);
 
 -- --------------------------------------------------------
 
@@ -33558,32 +33571,14 @@ CREATE TABLE `tbl_imgpitch` (
 --
 
 INSERT INTO `tbl_imgpitch` (`img_id`, `img_name`, `pitch_id`, `time_up`) VALUES
-(59, '1670300576login1.jpg', 22, 1670300576),
-(60, '1670300576login2.jpg', 22, 1670300576),
-(61, '1670300576san5.jpg', 22, 1670300576),
-(62, '1670300576san7.jpg', 22, 1670300576),
-(63, '1670300576san11.jpg', 22, 1670300576),
-(71, '1670300696san7.jpg', 20, 1670300696),
-(72, '1670300696san11.jpg', 20, 1670300696),
-(73, '1670304359email2.jpg', 24, 1670304359),
-(74, '1670385554san11.jpg', 21, 1670385554);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tbl_match`
---
-
-CREATE TABLE `tbl_match` (
-  `match_id` int(10) UNSIGNED NOT NULL,
-  `match_time` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `match_team_level` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `match_desc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `match_status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `team_id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(75, '1670812241san5.jpg', 25, 1670812241),
+(76, '1670812241san7.jpg', 25, 1670812241),
+(77, '1670812293login2.jpg', 26, 1670812293),
+(78, '1670812343san5.jpg', 27, 1670812343),
+(79, '1670812343san7.jpg', 27, 1670812343),
+(80, '1670812343san11.jpg', 27, 1670812343),
+(81, '1670812421san11.jpg', 28, 1670812421),
+(83, '1670812480login2.jpg', 29, 1670812480);
 
 -- --------------------------------------------------------
 
@@ -33613,10 +33608,11 @@ CREATE TABLE `tbl_pitch` (
 --
 
 INSERT INTO `tbl_pitch` (`pitch_id`, `pitch_name`, `pitch_manager`, `pitch_description`, `pitch_city`, `pitch_ward`, `pitch_street`, `pitch_address`, `pitch_file`, `pitch_time`, `pitch_status`, `pitch_district`, `pitch_link_map`, `pitch_extension`) VALUES
-(20, 'Sân Mỹ Đình', 2, 'Cụm sân bao gồm 12 sân 5 người / 4 sân 7 người / 1 sân 11 người', 1, 374, 7348, 'số 39 ngõ 142', NULL, '1670292108', 0, 27, 'https://www.google.com/maps/place/5a+%C4%90.+L%C3%AA+%C4%90%E1%BB%A9c+Th%E1%BB%8D,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0361811,105.7693213,17z/data=!3m1!4b1!4m5!3m4!1s0x313454b793d0f383:0xe0cbc775fca4794c!8m2!3d21.0361811!4d105.77151?hl=vi-VN', '[\"1\",\"2\",\"5\"]'),
-(21, 'Sân ĐHCNHN', 8, 'Cụm sân bao gồm 12 sân 5 người / 4 sân 7 người / 1 sân 11 người', 1, 327, 7221, 'số 39 ngõ 142', NULL, '1670292129', 0, 25, 'https://www.google.com/maps/place/5a+%C4%90.+L%C3%AA+%C4%90%E1%BB%A9c+Th%E1%BB%8D,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0361811,105.7693213,17z/data=!3m1!4b1!4m5!3m4!1s0x313454b793d0f383:0xe0cbc775fca4794c!8m2!3d21.0361811!4d105.77151?hl=vi-VN', '[\"1\",\"2\",\"5\"]'),
-(22, 'Sân TheAnh28', 9, 'Cụm sân bao gồm 12 sân 5 người / 4 sân 7 người / 1 sân 11 người', 1, 327, 7220, 'số 39 ngõ 142', NULL, '1670300576', 0, 25, 'https://www.google.com/maps/place/5a+%C4%90.+L%C3%AA+%C4%90%E1%BB%A9c+Th%E1%BB%8D,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0361811,105.7693213,17z/data=!3m1!4b1!4m5!3m4!1s0x313454b793d0f383:0xe0cbc775fca4794c!8m2!3d21.0361811!4d105.77151?hl=vi-VN', '[\"1\",\"2\",\"5\"]'),
-(24, 'Sân mỹ đình2', 6, 'Cụm sân bao gồm 12 sân 5 người / 4 sân 7 người / 1 sân 11 người', 1, 327, 7220, 'số 39 ngõ 142', NULL, '1670304359', 0, 25, 'https://www.google.com/maps/place/5a+%C4%90.+L%C3%AA+%C4%90%E1%BB%A9c+Th%E1%BB%8D,+Mai+D%E1%BB%8Bch,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0361811,105.7693213,17z/data=!3m1!4b1!4m5!3m4!1s0x313454b793d0f383:0xe0cbc775fca4794c!8m2!3d21.0361811!4d105.77151?hl=vi-VN', '[\"1\",\"2\",\"5\"]');
+(25, 'Sân ĐHCNHN', 10, 'Cụm sân bóng 7 người với 4 sân bóng. Dịch vụ tiện nghi', 1, 327, 7220, 'số 39 ngõ 142', NULL, '1670812241', 0, 25, 'https://www.google.com/maps/place/Ch%E1%BB%A3+Hoa+Qu%E1%BA%A3ng+B%C3%A1/@21.0678829,105.8251733,17z/data=!3m1!4b1!4m5!3m4!1s0x3135aa8d397f4aeb:0x37c4c188e579eca3!8m2!3d21.0678829!4d105.827362?hl=vi-VN', '[\"9\",\"10\",\"11\"]'),
+(26, 'Sân Mỹ Đình', 11, 'Cụm sân bóng 7 người với 4 sân nhỏ. Dịch vụ tiện nghi', 2, 1402, 16636, 'số 39 ngõ 142', NULL, '1670812293', 0, 92, 'https://www.google.com/maps/place/Ch%E1%BB%A3+Hoa+Qu%E1%BA%A3ng+B%C3%A1/@21.0678829,105.8251733,17z/data=!3m1!4b1!4m5!3m4!1s0x3135aa8d397f4aeb:0x37c4c188e579eca3!8m2!3d21.0678829!4d105.827362?hl=vi-VN', '[\"9\",\"10\"]'),
+(27, 'Sân Đông Ngạc', 12, 'Cụm sân bóng 7 người với 4 sân bóng. Dịch vụ tiện nghi', 3, 5870, 26123, 'số 39 ngõ 142', NULL, '1670812343', 0, 369, 'https://www.google.com/maps/place/Ch%E1%BB%A3+Hoa+Qu%E1%BA%A3ng+B%C3%A1/@21.0678829,105.8251733,17z/data=!3m1!4b1!4m5!3m4!1s0x3135aa8d397f4aeb:0x37c4c188e579eca3!8m2!3d21.0678829!4d105.827362?hl=vi-VN', '[\"9\"]'),
+(28, 'Sân bóng Ngạo Long', 13, 'Sân bóng DHCNHN với 2 sân bóng 5 người và 2 sân bóng 7 người', 1, 378, 7349, 'số 39 ngõ 142', NULL, '1670812421', 0, 27, 'https://www.google.com/maps/place/Ch%E1%BB%A3+Hoa+Qu%E1%BA%A3ng+B%C3%A1/@21.0678829,105.8251733,17z/data=!3m1!4b1!4m5!3m4!1s0x3135aa8d397f4aeb:0x37c4c188e579eca3!8m2!3d21.0678829!4d105.827362?hl=vi-VN', '[\"9\",\"10\",\"11\"]'),
+(29, 'Sân Mỹ Đình 2', 14, 'ok', 1, 388, 7431, 'số 39 ngõ 142', NULL, '1670812462', 0, 28, 'https://www.google.com/maps/place/Ch%E1%BB%A3+Hoa+Qu%E1%BA%A3ng+B%C3%A1/@21.0678829,105.8251733,17z/data=!3m1!4b1!4m5!3m4!1s0x3135aa8d397f4aeb:0x37c4c188e579eca3!8m2!3d21.0678829!4d105.827362?hl=vi-VN', '[\"9\",\"11\"]');
 
 -- --------------------------------------------------------
 
@@ -33636,15 +33632,10 @@ CREATE TABLE `tbl_pitch_type` (
 --
 
 INSERT INTO `tbl_pitch_type` (`pitch_type_id`, `pitch_type`, `pitch_type_parent`, `pitch_type_name`) VALUES
-(7, 2, 20, 'Sân 7A'),
-(8, 2, 20, 'Sân 7C'),
-(9, 2, 20, 'Sân 7B'),
-(10, 2, 20, 'Sân 7D'),
-(11, 2, 21, 'Sân 7A'),
-(12, 2, 21, 'Sân 7B'),
-(13, 2, 21, 'Sân 7C'),
-(14, 2, 21, 'Sân 7D'),
-(16, 3, 21, 'Sân 5A');
+(17, 2, 28, 'Sân 7A'),
+(18, 2, 28, 'Sân 7B'),
+(19, 2, 28, 'Sân 7C'),
+(21, 2, 28, 'Sân 7D');
 
 -- --------------------------------------------------------
 
@@ -33668,7 +33659,11 @@ CREATE TABLE `tbl_price` (
 --
 
 INSERT INTO `tbl_price` (`time_id`, `time_start`, `time_end`, `price`, `pitch`, `pitch_type`, `type`, `date`) VALUES
-(24, 1670580000, 1670585400, 200000, 20, '[7]', 2, '[1670544000]');
+(33, 919314600, 919317780, 200000, 28, NULL, 1, NULL),
+(34, 919319400, 919323600, 200000, 28, NULL, 1, NULL),
+(35, 919321200, 919324800, 200000, 28, NULL, 2, NULL),
+(36, 919307880, 919311480, 200000, 28, NULL, 2, NULL),
+(37, 919328400, 919335600, 200000, 28, NULL, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -33718,7 +33713,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `team_id`, `name`, `email`, `email_verified_at`, `user_phone`, `user_image`, `user_gender`, `user_date_of_birth`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'users', 'users@gmail.com', NULL, '0966990354', NULL, NULL, NULL, '$2y$10$oiXQUNlP1uC0j8PAGUdLLOmrDR1JWEbSGc31o.0q79zUtjGq9s5/.', NULL, NULL, NULL);
+(2, NULL, 'user@gmail.com', 'user@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$4hwt7YmgBB9TwBp8r8PER.g1wNwgS.rwkyTKdRVA6GyvYPS2dmBpi', NULL, '2022-12-11 19:46:17', '2022-12-11 19:46:17'),
+(6, NULL, 'conguyen@gmail.com', 'conguyen@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$0w3gED.1VyERg97sij.q1.T0uNZw.1LhkuK4Fd8SHt2SJqKMVcaSK', NULL, '2022-12-11 20:03:32', '2022-12-11 20:03:32'),
+(7, NULL, 'nguyễn bá công', 'conguyen6262@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$TF/xxH5yUlNpSNumCc854uTj3FVPBX2AFlF8hMJlkiuM6vVc6/Gau', 'IvnAn8L3wc8zgngVef87y9IGC2AlkMOW6zsvMqpgX67Yq40M3brg5LL6XDnY', '2022-12-11 21:53:59', '2022-12-12 08:51:00');
 
 -- --------------------------------------------------------
 
@@ -45112,12 +45109,6 @@ ALTER TABLE `tbl_imgpitch`
   ADD PRIMARY KEY (`img_id`);
 
 --
--- Chỉ mục cho bảng `tbl_match`
---
-ALTER TABLE `tbl_match`
-  ADD PRIMARY KEY (`match_id`);
-
---
 -- Chỉ mục cho bảng `tbl_pitch`
 --
 ALTER TABLE `tbl_pitch`
@@ -45205,49 +45196,43 @@ ALTER TABLE `street`
 -- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `booking_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `booking_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_extension`
 --
 ALTER TABLE `tbl_extension`
-  MODIFY `ex_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ex_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_imgpitch`
 --
 ALTER TABLE `tbl_imgpitch`
-  MODIFY `img_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
-
---
--- AUTO_INCREMENT cho bảng `tbl_match`
---
-ALTER TABLE `tbl_match`
-  MODIFY `match_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `img_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_pitch`
 --
 ALTER TABLE `tbl_pitch`
-  MODIFY `pitch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `pitch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_pitch_type`
 --
 ALTER TABLE `tbl_pitch_type`
-  MODIFY `pitch_type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `pitch_type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_price`
 --
 ALTER TABLE `tbl_price`
-  MODIFY `time_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `time_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_type`
@@ -45259,7 +45244,7 @@ ALTER TABLE `tbl_type`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `ward`

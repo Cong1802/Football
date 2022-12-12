@@ -39,6 +39,7 @@ class BookingController extends Controller
             'booking_time'=>$request->booking_time,
             'booking_time_cr'=>time(),
             'booking_status'=>0,
+            'booking_phone' => $request->booking_phone
         ];
 
         $insert = DB::table('tbl_booking')->insert($data);
@@ -48,7 +49,7 @@ class BookingController extends Controller
 
 
     public function history_booking(){
-        $booking_history = DB::table('tbl_booking')->select('time_start', 'time_end', 'user_phone','type_name','pitch_type_name','pitch_name','name','price')
+        $booking_history = DB::table('tbl_booking')->select('time_start', 'time_end','booking_phone','user_phone', 'booking_status','type_name','pitch_type_name','pitch_name','name','price')
         ->join('tbl_pitch','tbl_pitch.pitch_id','=','tbl_booking.booking_pitch')
         ->join('users','users.id','=','tbl_booking.booking_user')
         ->join('tbl_pitch_type','tbl_pitch_type.pitch_type_id','=','tbl_booking.booking_pitch_type')
@@ -75,7 +76,9 @@ class BookingController extends Controller
         $pitch_id = $request->pitch_id;
         $type_id = $request->type_id;
         $date = strtotime($request->date);
-        $pitch_type = DB::table('tbl_price')->where('type', $type_id)->where('pitch', $pitch_id)->get();
+        $pitch_type = DB::table('tbl_price')->where('type', $type_id)->where('pitch', $pitch_id)
+        ->orderBy('time_start', 'asc')
+        ->get();
         $data = [];
         $i=0;
         foreach ($pitch_type as $key => $value)
@@ -98,13 +101,28 @@ class BookingController extends Controller
                     }
                     else
                     {
-                        $data[$i]['disabled'] = 0;
+                        if(strtotime(date('H:i',time()).' 18-02-1999') < $value->time_start)
+                        {
+                            $data[$i]['disabled'] = 1;
+                            break;
+                        }
+                        else
+                        {
+                            $data[$i]['disabled'] = 0;
+                        }
                     }
                 }
             }
             else
             {
-                $data[$i]['disabled'] = 0;
+                if(strtotime(date('H:i',time()).' 18-02-1999') > $value->time_start)
+                {
+                    $data[$i]['disabled'] = 1;
+                }
+                else
+                {
+                    $data[$i]['disabled'] = 0;
+                }
             }
 
             $i++;

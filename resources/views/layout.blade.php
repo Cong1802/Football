@@ -26,13 +26,19 @@
         <!--============= TOP-BAR ===========-->
         <nav class="navbar navbar-default main-navbar navbar-custom navbar-white" id="mynavbar">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header d-flex">
                     <button type="button" class="navbar-toggle" id="menu-button">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a href="{{URL::to('/')}}" class="navbar-brand"><span><i class="fa fa-soccer-ball-o"></i>28 </span>FOOTBALL</a>
+                    <a href="{{URL::to('/')}}" class="navbar-brand d-flex p-0 align-items-center">
+                        <img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/300942774_1541831132900718_2040217408804123659_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UAqiLYVj4RIAX9PYi-5&_nc_ht=scontent.fhan17-1.fna&oh=00_AfA-h_z8NHkot7_ZfYHyHa_tQjhWKylEWsI9Xu5ggEGS8A&oe=639ACE1F" style="height: 70px"> &nbsp;
+                        <section class="wrapper">
+                            <div class="top text-shadow">Sport</div>
+                            <div class="bottom text-shadow" aria-hidden="true">Sport</div>
+                        </section>
+                    </a>
                 </div>
                 <!-- end navbar-header -->
 
@@ -40,7 +46,6 @@
                     <ul class="nav">
                         <li><a href="{{URL::to('/')}}">Trang chủ<span></span></a></li>
                         <li><a href="{{ URL::to('/search') }}">Sân bóng<span></span></a></li>
-                        <li><a href="{{ URL::to('/history-booking') }}">Thông tin đặt sân<span></span></a></li>
                         @if (Auth::guard('web')->user())
                             @auth
                             <li class="dropdown">

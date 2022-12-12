@@ -3,11 +3,8 @@
     <!--========================= FLEX SLIDER =====================-->
     <section class="container py-5">
       <div class="tab-content">
-        <div class="meta py-5">
+        <div class="meta pb-5">
           <div class="container">
-            <div class="text-lg-left d-none d-md-block mb-2">
-              <img src="https://www.sporta.vn/assets/wordmark_orange-ed66bc5b0e0947731a85c89881eccaae39d86b653850da31181ad841b9c9cdd2.svg" alt="Sporta" style="height: 50px;">
-           </div>
            <div class="text-center text-lg-left d-md-block">
             <h4 class="display-5 font-weight-bold text-shadow">
               CÁP KÈO NHANH CHÓNG - TÌM ĐỐI DỄ DÀNG

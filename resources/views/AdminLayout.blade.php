@@ -87,13 +87,13 @@
                     </ul>
                   </li>
                   <li><a href="{{ URL::to('admin/booking') }}"><i class="fa fa-bar-chart-o"></i>Booking</a></li>
+                  @endif
                   <li><a><i class="fa fa-clone"></i>Tiện ích <span class="fa fa-chevron-down"></span>
                     <ul class="nav child_menu">
                       <li><a href="{{ URL::to('admin/extension') }}">Danh sách tiện ích</a></li>
                       <li><a href="{{ URL::to('admin/add-extension') }}">Thêm tiện ích</a></li>
                     </ul>
                   </li>
-                  @endif
                 </ul>
               </div>
             </div>

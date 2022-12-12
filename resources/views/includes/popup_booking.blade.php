@@ -58,7 +58,7 @@
                     <!-- end form-group -->
                     <div class="form-group">
                         <label for="booking_details_phone">Số điện thoại <small class="text-danger">*</small></label>
-                        <input type="text" disabled class="input-custom" id="booking_details_phone" value="{{Auth::guard('web')->user()->user_phone}}"/>
+                        <input type="number" required name="booking_phone" class="input-custom" id="booking_details_phone" value="{{Auth::guard('web')->user()->user_phone}}"/>
                     </div>
                     <!-- end form-group -->                                                
                     <div class="d-flex justify-content-end">

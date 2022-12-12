@@ -41,10 +41,6 @@ Route::post('/autocomplete-ajax', [App\Http\Controllers\HomeController::class, '
 Route::get('/user-infomation/{id}', [App\Http\Controllers\UserInfoController::class, 'user_infomation']);
 Route::post('/update-user-info/{id}', [App\Http\Controllers\UserInfoController::class, 'update_user_infomation']);
 
-Route::get('/create-match', [App\Http\Controllers\MatchController::class, 'create_match']);
-Route::post('/insert-match', [App\Http\Controllers\MatchController::class, 'insert_match']);
-Route::get('/history-match', [App\Http\Controllers\MatchController::class, 'history_match']);
-
 // booking
 Route::get('/booking/{pitch_id}', [App\Http\Controllers\BookingController::class, 'booking']);
 Route::post('/select-pitch-type', [App\Http\Controllers\BookingController::class, 'SelectPitchType']);

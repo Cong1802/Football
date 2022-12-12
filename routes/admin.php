@@ -66,4 +66,9 @@
         // booking
         Route::get('/booking', [AdminController::class,'Booking']);
         Route::get('/done-booking/{booking_id}', [AdminController::class,'DoneBooking']);
+        Route::get('/cancel-booking/{booking_id}', [AdminController::class,'CancelBooking']);
+        Route::get('/delete-booking/{booking_id}', [AdminController::class,'RemoveBooking']);
+        Route::get('/reset-booking/{booking_id}', [AdminController::class,'OkBooking']);
+
+        Route::get('/-booking/{booking_id}', [AdminController::class,'DoneBooking']);
     });

@@ -5,9 +5,6 @@
     <div class="tab-content">
       <div class="meta py-5">
         <div class="container">
-          <div class="text-lg-left d-none d-md-block mb-2">
-            <img src="https://www.sporta.vn/assets/wordmark_orange-ed66bc5b0e0947731a85c89881eccaae39d86b653850da31181ad841b9c9cdd2.svg" alt="Sporta" style="height: 50px;">
-         </div>
          <div class="text-center text-lg-left d-md-block">
           <h4 class="display-5 font-weight-bold text-shadow">
             CÁP KÈO NHANH CHÓNG - TÌM ĐỐI DỄ DÀNG
@@ -72,7 +69,7 @@
                                                     <tr>
                                                         <td><span><ion-icon name="call-outline"></ion-icon> </span> Số điện thoại liên hệ: </td>
                                                         <td>
-                                                            {{$booking_history_info->user_phone}} 
+                                                            0{{$booking_history_info->booking_phone}} 
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -88,8 +85,22 @@
                                                         <td>{{$booking_history_info->name}}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td><span><ion-icon name="server-outline"></ion-icon> </span>Trạng thái:</td>
+                                                        <td>
+                                                            @if($booking_history_info->booking_status == 1)
+                                                            <span class="badge badge-success">Đã duyệt</span>
+                                                            @elseif($booking_history_info->booking_status == 2)
+                                                            <span class="badge badge-danger">Đã hủy</span>
+                                                            @elseif($booking_history_info->booking_status == 0)
+                                                            <span class="badge badge-info">Đang chờ</span>
+                                                            @elseif($booking_history_info->booking_status == 3)
+                                                            <span class="badge badge-warning">Hoàn thành</span>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><span><ion-icon name="cash-outline"></ion-icon> </span>Giá tiền:</td>
-                                                        <td>{{ number_format($booking_history_info->price) }}</td>
+                                                        <td>{{ number_format($booking_history_info->price) }} VNĐ</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

@@ -4991,3 +4991,33 @@ body
     color: #1a1544;
     font-weight:500
 }
+:root {
+    --background-color: black;
+    --text-color: hsl(0, 0%, 0%);
+}
+.wrapper {
+    display: grid;
+    place-content: center;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.5rem, 1rem + 18vw, 15rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-size: 30px;
+    }
+
+.wrapper > div {
+    grid-area: 1/1/-1/-1;
+}
+.top {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+}
+.bottom {
+    clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+    color: transparent;
+    background: linear-gradient(177deg, rgb(255, 255, 255) 53%, var(--text-color) 65%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    transform: translateX(-0.02em);
+}
+  

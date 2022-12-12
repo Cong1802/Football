@@ -5,7 +5,7 @@
         <div class="col-md-12 col-sm-12  ">
             <div class="x_panel">
             <div class="x_title">
-                <h2>Danh sách bookig</h2>
+                <h2>Danh sách booking</h2>
                 <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -59,10 +59,29 @@
                         <td class=" ">{{ timeslot($value->booking_time) .' || Ngày '. date('d/m/Y',$value->booking_date) }}</td>
                         <td class=" ">{{ number_format(price($value->booking_time)) }} VNĐ</td>
                         <td class=" ">{{ $value->pitch_type_name }}</td>
-                        <td class=" ">{{ ($value->booking_status == 1) ? 'Đã duyệt' : 'Chưa duyệt' }}</td>
+                        <td >
+                            @if($value->booking_status == 1)
+                            <span class="badge badge-success">Đã duyệt</span>
+                            @elseif($value->booking_status == 2)
+                            <span class="badge badge-danger">Đã hủy</span>
+                            @elseif($value->booking_status == 0)
+                            <span class="badge badge-info">Đang chờ</span>
+                            @elseif($value->booking_status == 3)
+                            <span class="badge badge-warning">Hoàn thành</span>
+                            @endif
+                        </td>
                         <td class=" ">
+                            @if($value->booking_status == 0)
                             <a href="{{URL::to('admin/done-booking/'.$value->booking_id)}}"><ion-icon name="create-outline"></ion-icon> Duyệt</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a onclick="return confirm('Bạn có chắc là muốn xóa người này ko?')" href="{{URL::to('admin/delete-admin/'.$value->booking_id)}}"><ion-icon name="trash-outline"></ion-icon> Hủy</a>
+                            <a onclick="return confirm('Bạn có chắc là muốn hủy yêu cầu này ko?')" href="{{URL::to('admin/cancel-booking/'.$value->booking_id)}}"><ion-icon name="create-outline"></ion-icon> Hủy</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            @elseif($value->booking_status == 2)
+                            <a onclick="return confirm('Bạn có chắc là muốn xóa người này ko?')" href="{{URL::to('admin/delete-booking/'.$value->booking_id)}}"><ion-icon name="trash-outline"></ion-icon> Xóa</a>
+                            @elseif ($value->booking_status == 1)
+                            <a href="{{URL::to('admin/reset-booking/'.$value->booking_id)}}"><ion-icon name="checkmark-outline"></ion-icon> Hoàn thành</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a onclick="return confirm('Bạn có chắc là muốn hủy yêu cầu này ko?')" href="{{URL::to('admin/cancel-booking/'.$value->booking_id)}}"><ion-icon name="create-outline"></ion-icon> Hủy</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            @elseif ($value->booking_status == 3)
+                            <a href="{{URL::to('admin/dashboards')}}"><ion-icon name="save-outline"></ion-icon> Thống kê</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            @endif
                         </td>
                     </tr>
                     <?php endforeach ?>

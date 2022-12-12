@@ -59,6 +59,7 @@ class AdminController extends Controller
         $admin_info->email = $data['admin_email'];
         $admin_info->phone = $data['admin_phone'];
         $admin_info->role = 0;
+        $admin_info->admin_pitch = 0;
         $admin_info->password = bcrypt($data['admin_password']);
         $admin_info->save();
     	return redirect('admin/ListAdmin')->with('success','Thêm admin thành công');
@@ -74,7 +75,7 @@ class AdminController extends Controller
         $admin_info->name = $data['admin_name'];
         $admin_info->email = $data['admin_email'];
         $admin_info->phone = $data['admin_phone'];
-        $admin_info->password = md5($data['admin_password']);
+        $admin_info->password = bcrypt($data['admin_password']);
         $admin_info->save();
     	return redirect('admin/ListAdmin')->with('success','cập nhật admin thành công');
     }
@@ -112,7 +113,6 @@ class AdminController extends Controller
     }
     public function DoneBooking($booking_id)
     {
-        $update_booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->update(['booking_status' => '1']);
         $booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->first();
         $time_id = $booking->booking_time;
         $tbl_time = DB::table('tbl_price')->where('time_id',$time_id)->first();
@@ -137,8 +137,48 @@ class AdminController extends Controller
             'pitch_type' => $pitch_TypeJson,
             'date' => $DateJson,
         ];
+        $count = count($pitch_Type);
+        $update_booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->update(['booking_status' => '1','booking_count_time' => $count]);
         $update_time = DB::table('tbl_price')->where('time_id',$time_id)->update($data_update);
-        return redirect('admin/booking')->with('success','thành công');
+        return redirect('admin/booking')->with('success','Duyệt yêu cầu đặt sân thành công');
+    }
+    public function CancelBooking($booking_id)
+    {
+        $update_booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->update(['booking_status' => '2']);
+        $booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->first();
+        $time_id = $booking->booking_time;
+        $count = $booking->booking_count_time;
+
+        $tbl_time = DB::table('tbl_price')->where('time_id',$time_id)->first();
+        $pitch_TypeJson = $tbl_time->pitch_type;
+        $DateJson = $tbl_time->date;
+        if($pitch_TypeJson != '' &&  $DateJson != '')
+        {
+            $pitch_Type = json_decode($pitch_TypeJson);
+            unset($pitch_Type[$count - 1]);
+
+            $Date = json_decode($DateJson);
+            unset($Date[$count - 1]);
+
+            $pitch_TypeJson = json_encode($pitch_Type);
+            $DateJson = json_encode($Date);
+            $data_update = [
+                'pitch_type' => $pitch_TypeJson,
+                'date' => $DateJson,
+            ];
+            $update_time = DB::table('tbl_price')->where('time_id',$time_id)->update($data_update);
+        }
+        return redirect('admin/booking')->with('success','Hủy yêu cầu đặt sân thành công');
+    }
+    public function RemoveBooking($booking_id)
+    {
+        $update_booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->delete();
+        return redirect('admin/booking')->with('success','Xóa yêu cầu đặt sân thành công');
+    }
+    public function OkBooking($booking_id)
+    {
+        $update_booking = DB::table('tbl_booking')->where('booking_id',$booking_id)->update(['booking_status' => '3']);
+        return redirect('admin/booking')->with('success','Xóa yêu cầu đặt sân thành công');
     }
     public function Profile($id)
     {

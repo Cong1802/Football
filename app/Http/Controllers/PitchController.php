@@ -84,7 +84,7 @@ class PitchController extends Controller
         $ward = DB::table('ward')->where('_district_id',$district_id)->get();
         $street = DB::table('street')->where('_district_id',$district_id)->get();
 
-        $list_admin = DB::table('tbl_admin')->get();
+        $list_admin = DB::table('tbl_admin')->where('admin_pitch',0)->where('role',0)->get();
     	return view('admin.pitch.EditPitch',['list_admin'=>$list_admin,'extension'=>$extension,'city' => $city,'district' => $district,'ward' => $ward,'street' => $street,'pitch' => $pitch]);
     }
     public function UpdatePitch(PitchRQ $request,$pitch_id){
