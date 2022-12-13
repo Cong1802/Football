@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 12, 2022 lúc 09:55 AM
+-- Thời gian đã tạo: Th12 13, 2022 lúc 02:42 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 7.4.30
 
@@ -33645,8 +33645,8 @@ INSERT INTO `tbl_pitch_type` (`pitch_type_id`, `pitch_type`, `pitch_type_parent`
 
 CREATE TABLE `tbl_price` (
   `time_id` int(10) UNSIGNED NOT NULL,
-  `time_start` int(11) DEFAULT NULL,
-  `time_end` int(11) DEFAULT NULL,
+  `time_start` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `time_end` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `pitch` int(11) DEFAULT NULL,
   `pitch_type` text CHARACTER SET utf8 DEFAULT NULL,
@@ -33659,11 +33659,12 @@ CREATE TABLE `tbl_price` (
 --
 
 INSERT INTO `tbl_price` (`time_id`, `time_start`, `time_end`, `price`, `pitch`, `pitch_type`, `type`, `date`) VALUES
-(33, 919314600, 919317780, 200000, 28, NULL, 1, NULL),
-(34, 919319400, 919323600, 200000, 28, NULL, 1, NULL),
-(35, 919321200, 919324800, 200000, 28, NULL, 2, NULL),
-(36, 919307880, 919311480, 200000, 28, NULL, 2, NULL),
-(37, 919328400, 919335600, 200000, 28, NULL, 2, NULL);
+(33, '919314600', '919317780', 200000, 28, NULL, 1, NULL),
+(34, '919319400', '919323600', 200000, 28, NULL, 1, NULL),
+(35, '919321200', '919324800', 200000, 28, NULL, 2, NULL),
+(36, '919307880', '919311480', 200000, 28, NULL, 2, NULL),
+(37, '919328400', '919335600', 200000, 28, NULL, 2, NULL),
+(38, '17:30', '19:00', 200000, 28, NULL, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -33715,7 +33716,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `team_id`, `name`, `email`, `email_verified_at`, `user_phone`, `user_image`, `user_gender`, `user_date_of_birth`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, NULL, 'user@gmail.com', 'user@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$4hwt7YmgBB9TwBp8r8PER.g1wNwgS.rwkyTKdRVA6GyvYPS2dmBpi', NULL, '2022-12-11 19:46:17', '2022-12-11 19:46:17'),
 (6, NULL, 'conguyen@gmail.com', 'conguyen@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$0w3gED.1VyERg97sij.q1.T0uNZw.1LhkuK4Fd8SHt2SJqKMVcaSK', NULL, '2022-12-11 20:03:32', '2022-12-11 20:03:32'),
-(7, NULL, 'nguyễn bá công', 'conguyen6262@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$TF/xxH5yUlNpSNumCc854uTj3FVPBX2AFlF8hMJlkiuM6vVc6/Gau', 'IvnAn8L3wc8zgngVef87y9IGC2AlkMOW6zsvMqpgX67Yq40M3brg5LL6XDnY', '2022-12-11 21:53:59', '2022-12-12 08:51:00');
+(7, NULL, 'nguyễn bá công', 'conguyen6262@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$mEhUS4PqATagGEjoIfXYf.TNX60vAdK0ftJOQWxoasPG02pcBRyp6', 'dkCOdKPxAAE4qyhn1rE4KFSZnpWaqol2c8EAgjAvE5ZpIn8bkZoQIwmUVPuz', '2022-12-11 21:53:59', '2022-12-12 09:12:26');
 
 -- --------------------------------------------------------
 
@@ -45232,7 +45233,7 @@ ALTER TABLE `tbl_pitch_type`
 -- AUTO_INCREMENT cho bảng `tbl_price`
 --
 ALTER TABLE `tbl_price`
-  MODIFY `time_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `time_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_type`
