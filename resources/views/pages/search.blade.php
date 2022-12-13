@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="p-1 m-2 venue-item-details">
                                   <div class="venue-item__name venue-item__link mb-1">
-                                    <a href="{{ URL::to('/booking/'.$pitch->pitch_id) }}" class="text-decoration-none heading-text"><h5>{{ $pitch->pitch_name }}</h5></a>
+                                    <a href="{{ URL::to('/pitch/'.$pitch->pitch_id) }}" class="text-decoration-none heading-text"><h5>{{ $pitch->pitch_name }}</h5></a>
                                   </div>
                                   <div class="venue-item__address venue-item__link mb-2">
                                     <ion-icon name="location-sharp"></ion-icon> {{ $pitch->pitch_address.', '.street($pitch->pitch_street)->_name.', '.ward($pitch->pitch_ward)->_name.', '.district($pitch->pitch_district)->_name.', '.city($pitch->pitch_city)->cit_name}}
@@ -107,7 +107,6 @@
                               </div>
                             </div>
                         </li>
-              
                     @endforeach
                 </ul>
                     </div>

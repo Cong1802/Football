@@ -12,7 +12,7 @@
                             <div class="swiper-wrapper">
                                 <?php foreach($list_pitch as $key => $value): ?>
                                 <div class="swiper-slide">
-                                    <a href="{{URL::to('/booking/'.$value->pitch_id)}}">
+                                    <a href="{{URL::to('/pitch/'.$value->pitch_id)}}">
                                         <div class="card">
                                             @if(!empty(imgPitch($value->pitch_id)))
                                                 <img src="{{ asset('public/uploads/pitch/'.imgPitch($value->pitch_id)->img_name)}}" alt="A City skyline at sunset"/>

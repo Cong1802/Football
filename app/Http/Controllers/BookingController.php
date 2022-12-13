@@ -101,7 +101,7 @@ class BookingController extends Controller
                     }
                     else
                     {
-                        if(strtotime(date('H:i',time()).' 18-02-1999') < $value->time_start)
+                        if(strtotime(date('H:i',time()).' 18-02-1999') < $value->time_start && strtotime(date('d/m/Y',time()) == $check_date[$key]))
                         {
                             $data[$i]['disabled'] = 1;
                             break;
@@ -115,7 +115,7 @@ class BookingController extends Controller
             }
             else
             {
-                if(strtotime(date('H:i',time()).' 18-02-1999') > $value->time_start)
+                if(strtotime(date('H:i',time()).' 18-02-1999') > $value->time_start && strtotime(date('d/m/Y',time()) == date('date')))
                 {
                     $data[$i]['disabled'] = 1;
                 }

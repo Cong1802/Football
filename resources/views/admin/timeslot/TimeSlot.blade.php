@@ -61,7 +61,7 @@
                 <?php  $i=1;foreach ($list_price as $key => $values) :?>
                 <tr class="even pointer">
                     <td>{{ $i }}</td>
-                    <td>{{ date('H:i',$values->time_start).' - '.date('H:i',$values->time_end) }}</td>
+                    <td>{{ $values->time_start.' - '.$values->time_end }}</td>
                     <td>{{ number_format($values->price) }} VNĐ</td>
                     <td>
                         @php 

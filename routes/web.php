@@ -43,6 +43,8 @@ Route::post('/update-user-info/{id}', [App\Http\Controllers\UserInfoController::
 
 // booking
 Route::get('/booking/{pitch_id}', [App\Http\Controllers\BookingController::class, 'booking']);
+Route::get('/pitch/{pitch_id}', [App\Http\Controllers\PitchController::class, 'pitch']);
+
 Route::post('/select-pitch-type', [App\Http\Controllers\BookingController::class, 'SelectPitchType']);
 Route::post('/select-date', [App\Http\Controllers\BookingController::class, 'SelectDate']);
 Route::post('/create-booking', [App\Http\Controllers\BookingController::class, 'create_booking']);

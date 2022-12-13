@@ -232,4 +232,16 @@ class PitchController extends Controller
 		$delete = DB::table('tbl_extension')->where('ex_id',$ex_id)->delete();
         return redirect('admin/extension')->with('success','xoá tiện ích thành công');
 	}
+	public function pitch($pitch_id){
+        $list_pitch = DB::table('tbl_pitch')->get();
+        $pitch = DB::table('tbl_pitch')->where('pitch_id',$pitch_id)->first();
+        $id_manager = $pitch->pitch_manager;
+        $list_img = DB::table('tbl_imgPitch')->where('pitch_id',$pitch_id)->get();
+        $manager = DB::table('tbl_admin')->where('id',$id_manager)->first();
+        $type = DB::table('tbl_type')->get();
+        $type_max = DB::table('tbl_type')->max('type_id');
+        $pitch_type = DB::table('tbl_pitch_type')->where('pitch_type',$type_max)->get();
+
+        return view('pages.booking.pitch')->with(compact('pitch','list_img','manager','pitch_type','type','list_pitch'));
+    }
 }
