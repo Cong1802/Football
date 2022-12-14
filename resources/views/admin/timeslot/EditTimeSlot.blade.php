@@ -39,13 +39,13 @@
                             <div class="form-group row ">
                                 <label class="control-label col-md-3 col-sm-3 ">Thời gian bắt đầu</label>
                                 <div class="col-md-9 col-sm-9 ">
-                                    <input type="time" value="{{ date('H:i',$time_edit->time_start) }}" class="form-control" required name="time_st">
+                                    <input type="time" value="{{ $time_edit->time_start }}" class="form-control" required name="time_st">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-md-3 col-sm-3 ">Thời gian kết thúc</label>
                                 <div class="col-md-9 col-sm-9 ">
-                                    <input type="time" class="form-control" value="{{ date('H:i',$time_edit->time_end) }}" required name="time_end">
+                                    <input type="time" class="form-control" value="{{ $time_edit->time_end }}" required name="time_end">
                                 </div>
                             </div>
                             <div class="form-group row">

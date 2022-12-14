@@ -57,13 +57,13 @@
                                                     <tr>
                                                         <td><span><ion-icon name="alarm-outline"></ion-icon> </span> Thời gian bắt đầu: </td>
                                                         <td>
-                                                            {{ date('H:i ||  d/m/Y',$booking_history_info->time_start) }} 
+                                                            {{ $booking_history_info->time_start }} || {{ date('d/m/Y',$booking_history_info->booking_date) }}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><span><ion-icon name="alarm-outline"></ion-icon> </span> Thời gian kết thúc: </td>
                                                         <td>
-                                                            {{ date('H:i || d/m/Y',$booking_history_info->time_end) }}
+                                                            {{ $booking_history_info->time_end }} || {{ date('d/m/Y',$booking_history_info->booking_date) }}
                                                         </td>
                                                     </tr>
                                                     <tr>

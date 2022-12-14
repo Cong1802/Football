@@ -29,27 +29,24 @@ class BookingController extends Controller
         return view('pages.booking.booking')->with(compact('pitch','list_img','manager','pitch_type','type','list_pitch'));
     }
     public function create_booking(Request $request){
-        // dd($request);
         $data = [
-            'booking_user'=>$request->user_id,
+            'booking_user'=> Auth::guard('web')->id(),
             'booking_pitch'=>$request->pitch,
-            'booking_type'=>$request->type,
-            'booking_pitch_type'=>$request->pitch_type,
-            'booking_date'=>strtotime($request->booking_details_date),
-            'booking_time'=>$request->booking_time,
+            'booking_type'=>$request->booker_type,
+            'booking_pitch_type'=>$request->booker_pitch_type,
+            'booking_date'=>strtotime($request->booker_date),
+            'booking_time'=>$request->timepicker,
             'booking_time_cr'=>time(),
             'booking_status'=>0,
             'booking_phone' => $request->booking_phone
         ];
-
         $insert = DB::table('tbl_booking')->insert($data);
     	return redirect('/history-booking')->with('success','Tạo phiếu đặt sân thành công, sẽ có người gọi tới để xác nhận đặt sân xin chờ máy');
-
     } 
 
 
     public function history_booking(){
-        $booking_history = DB::table('tbl_booking')->select('time_start', 'time_end','booking_phone','user_phone', 'booking_status','type_name','pitch_type_name','pitch_name','name','price')
+        $booking_history = DB::table('tbl_booking')->select('time_start', 'time_end','booking_phone','user_phone', 'booking_status','booking_date','type_name','pitch_type_name','pitch_name','name','price')
         ->join('tbl_pitch','tbl_pitch.pitch_id','=','tbl_booking.booking_pitch')
         ->join('users','users.id','=','tbl_booking.booking_user')
         ->join('tbl_pitch_type','tbl_pitch_type.pitch_type_id','=','tbl_booking.booking_pitch_type')
@@ -66,7 +63,6 @@ class BookingController extends Controller
     {
         $id = $request->id;
         $pitch_id = $request->pitch_id;
-
         $pitch_type = DB::table('tbl_pitch_type')->where('pitch_type', $id)->where('pitch_type_parent', $pitch_id)->get();
         echo json_encode($pitch_type);
     }
@@ -76,6 +72,7 @@ class BookingController extends Controller
         $pitch_id = $request->pitch_id;
         $type_id = $request->type_id;
         $date = strtotime($request->date);
+        // dd($date);
         $pitch_type = DB::table('tbl_price')->where('type', $type_id)->where('pitch', $pitch_id)
         ->orderBy('time_start', 'asc')
         ->get();
@@ -83,25 +80,23 @@ class BookingController extends Controller
         $i=0;
         foreach ($pitch_type as $key => $value)
         {
-            $data[$i]['time_st'] = date('H:i',$value->time_start);
-            $data[$i]['time_end'] = date('H:i',$value->time_end);
+            $data[$i]['time_st'] = strtotime($value->time_start);
+            $data[$i]['time_AM'] = date('H:i A',strtotime($value->time_start));
             $data[$i]['time_id'] = $value->time_id;
             $data[$i] ['price'] = $value->price;
             if($value->pitch_type != '' && $value->date != '')
             {
                 $check_pitch_Type = json_decode($value->pitch_type);
-
                 $check_date = json_decode($value->date);
-                foreach($check_pitch_Type as $key => $arr_pitch_Type)
-                {
-                    if($arr_pitch_Type == $pitch_type_id && $check_date[$key] == $date)
+                if(time() > strtotime($value->time_start) && strtotime(date('Y-m-d',time())) == strtotime(date('Y-m-d',$date)))
                     {
                         $data[$i]['disabled'] = 1;
-                        break;
                     }
-                    else
+                else
+                {
+                    foreach($check_pitch_Type as $key => $arr_pitch_Type)
                     {
-                        if(strtotime(date('H:i',time()).' 18-02-1999') < $value->time_start && strtotime(date('d/m/Y',time()) == $check_date[$key]))
+                        if($arr_pitch_Type == $pitch_type_id && $check_date[$key] == $date)
                         {
                             $data[$i]['disabled'] = 1;
                             break;
@@ -112,13 +107,14 @@ class BookingController extends Controller
                         }
                     }
                 }
+                
             }
             else
             {
-                if(strtotime(date('H:i',time()).' 18-02-1999') > $value->time_start && strtotime(date('d/m/Y',time()) == date('date')))
-                {
-                    $data[$i]['disabled'] = 1;
-                }
+                if(time() > strtotime($value->time_start) && strtotime(date('Y-m-d',time())) == strtotime(date('Y-m-d',$date)))
+                    {
+                        $data[$i]['disabled'] = 1;
+                    }
                 else
                 {
                     $data[$i]['disabled'] = 0;

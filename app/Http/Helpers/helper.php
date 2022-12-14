@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\DB;
     function timeslot($id)
     {
         $timeslot =DB::table('tbl_price')->select('time_start','time_end')->where('time_id',$id)->first();
-        $time = date('H:i',$timeslot->time_start).' - '.date('H:i',$timeslot->time_end);
+        $time = $timeslot->time_start.' - '.$timeslot->time_end;
         return $time;
     }
     function price($id)

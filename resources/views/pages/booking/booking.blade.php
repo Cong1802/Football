@@ -32,24 +32,29 @@
     </nav>
     <section class="innerpage-wrapper container">
         <form role="form" action="{{URL::to('/create-booking')}}" id="BookingPost" method="post">
+            @csrf
             <ul class="stepper parallel horizontal">
             <li class="step active">
                 <div class="step-title waves-effects waves-dark">Step 1</div>
                 <div class="step-content">
                     <div class="d-flex justify-content-center">
-                        <div class="shadown col-md-6 col-12 my-5">
+                        <div class="shadown col-md-6 col-12 my-4">
                             <div class="">
                                 <h4 class="display-5 text-center font-weight-bold text-shadow mt-4">Thông tin đặt sân</h4>
                                 <span class="animate-border mr-auto ml-auto mb-4"></span>
                                   <div class="text-block">
                                     <div class="form-group">
                                       <label for="name"><h6>Tên</h6></label>
-                                      <input id="name" name="booker_name" type="text" class="form-control" required placeholder="Họ tên ...">
+                                      <input id="name" name="booker_name" value="{{ Auth::guard('web')->user()->name }}" type="text" class="form-control" required placeholder="Họ tên ...">
                                     </div>
                                     <div class="form-group">
                                       <label for="phone"><h6>Số điện thoại</h6></label>
-                                      <input id="phone" name="booker_phone" type="text" class="form-control" required placeholder="Nhập số điện thoại...">
+                                      <input id="phone" name="booker_phone" value="{{ Auth::guard('web')->user()->phone }}" type="text" class="form-control" required placeholder="Nhập số điện thoại...">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="email"><h6>Email</h6></label>
+                                        <input id='email' name="booker_phone" value="{{ Auth::guard('web')->user()->email }}" type="text" class="form-control" required placeholder="Nhập số điện thoại...">
+                                      </div>
                                   </div>
                                   <div class="text-block">
                                     <h5 class="mb-4">Phương thức thanh toán</h5>
@@ -58,7 +63,6 @@
                                         <input id="cash" type="radio" class="form-check-input" name="payment_method" value="online" checked="">
                                         <label for="cash" class="form-check-label"><span class="text-sm">Thanh toán trực tiếp tại sân</span></label>
                                       </div>
-                                      
                                     </div>
                                   </div>
                                   <input type="text" name="asset_id" value="77" hidden="">
@@ -69,7 +73,6 @@
                     </div>
                     <div class="step-actions d-flex justify-content-end">
                         <button class="waves-effect waves-dark btn next-step" data-validator="validateStepOne">CONTINUE</button>
-                        <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
                     </div>
                 </div>
             </li>
@@ -119,7 +122,7 @@
                             </div>   
                             <div class="form-group right-icon box_input_infor">
                                 <label class="heading-text" for="field_type">Loại sân <small class="text-danger">*</small></label>
-                                <select onchange='select_pitch_type(this);select_timeslot()' class="pitch_type_id" name="type" class="input-custom">
+                                <select onchange='select_pitch_type(this);select_timeslot()' class="pitch_type_id" name="booker_type" class="input-custom">
                                     <option selected disabled>Chọn loại sân</option>
                                     <?php foreach($type as $key=>$value) :?>
                                     <option value="{{ $value->type_id }}">{{ $value->type_name }}</option>
@@ -128,7 +131,7 @@
                             </div>   
                             <div class="form-group right-icon box_input_infor">
                                 <label class="heading-text" for="field_type">Sân bóng <small class="text-danger">*</small></label>
-                                <select onchange = 'select_timeslot()' required class="pitch_type" name="pitch_type" class="input-custom">
+                                <select onchange = 'select_timeslot()' required class="pitch_type" name="booker_pitch_type" class="input-custom">
                                     <option selected disabled>Chọn sân bóng</option>
                                 </select>                                                      
                             </div>    
@@ -136,7 +139,7 @@
                     </div>
                 <div class="step-actions justify-content-end">
                     <button class="waves-effect waves-dark btn next-step">CONTINUE</button>
-                    <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+                    <button class="waves-effect waves-dark btn-flat previous-step">Trở lại</button>
                 </div>
                 </div>
             </li>
@@ -145,25 +148,18 @@
                 <div class="step-content">
                     <div class="d-flex flex-column">
                         <div class="step-actions justify-content-end">
-                            <button class="waves-effect waves-dark btn next-step" data-feedback="nextStepThreeHandler" data-validator="validateStepThree">CONTINUE</button>
-                            <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+                            <button type="submit" class="btn">Đặt sân</button>
+                            <button class="waves-effect waves-dark btn-flat previous-step">Trở lại</button>
                         </div>
-                        <input type="text" class="form-control mt-3" id="demo-timegrid">
+                        <div class="d-flex">
+                            <div class="datepicker col-8">
+                                <input readonly type="text" onchange="select_timeslot()" name="booker_date" class="form-control mt-3" id="demo-timegrid">
+                            </div>
+                            <div class="mbsc-ios mbsc-datepicker-inline mt-3 col-4">
+                                <div class="timepicker"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="step">
-                <div class="step-title waves-effects waves-dark">Step 4</div>
-                <div class="step-content">
-                <div class="row">
-                    <div class='form-field'>
-                    <p>Submit phase</p>
-                    </div>
-                </div>
-                <div class="step-actions">
-                    <input type="submit" class="waves-effect waves-dark btn next-step" value="SUBMIT"/>
-                    <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
-                </div>
                 </div>
             </li>
             </ul>
@@ -184,27 +180,14 @@
         });
         $(function () {
             $('#demo-timegrid').mobiscroll().datepicker({
-                controls: ['calendar', 'timegrid'],
+                controls: ['calendar'],
                 display: 'inline',
-                min: '2022-12-12T00:00',
-                minTime: '07:30',
-                maxTime: '21:00',
-                stepMinute: 90,
+                min: '{{ date("Y-m-d",time()) }}'+'T00:00',
                 labels: [{
-                    start: '2022-12-13',
+                    start: '{{ date("Y-m-d",time()) }}',
                     textColor: '#e1528f',
-                    title: '3 SPOTS'
+                    // title: '3 SPOTS'
                 }],
-                invalid: [{
-                    // start: '2022-12-13T08:00',
-                    // end: '2022-12-13T13:00'
-                }, {
-                    // start: '2022-12-13T15:00',
-                    // end: '2022-12-13T17:00'
-                }, {
-                    // start: '2022-12-13T19:00',
-                    // end: '2022-12-13T20:00'
-                }]
             });
         });
 
@@ -237,9 +220,9 @@
     }
     function select_timeslot()
     {
-        var pitch_type_id = $('select[name="pitch_type"]').val();
-        var type_id = $('select[name="type"]').val();
-        var date = $('input[name="booking_details_date"]').val();
+        var pitch_type_id = $('select[name="booker_pitch_type"]').val();
+        var type_id = $('select[name="booker_type"]').val();
+        var date = $('input[name="booker_date"]').val();
         var pitch_id = $('input[name="pitch"]').val();
         $.ajax({
                 url:"{{ URL::to('/select-date')}}",
@@ -253,18 +236,27 @@
                 },
                 success:function(data)
                 {
-                    var html = '<option value="">Chọn khung giờ</option>';
+                    $('.timepicker').children().remove();
+                    var i = 0;
+                    var html = '';
                     $.each(data, function(index, val) {
-                        if(val.disabled == 1)
+                        if(val.disabled != 1)
                         {
-                            html += '<option disabled value="' + val.time_id + '">' + val.time_st + ' - ' + val.time_end + ' - ' + val.price +' VNĐ</option>'
+                            html += '<div class="mbsc-timegrid-cell"><div><label class="mbsc-timegrid-item time-item" for="timepicker'+i+'">'+ val.time_AM +'</label><input class="radio-timepicker" name="timepicker" id="timepicker'+i+'" type="radio" value="'+ val.time_id +'"></div></div>';
                         }
                         else
                         {
-                            html += '<option value="' + val.time_id + '">' + val.time_st + ' - ' + val.time_end + ' - ' + val.price +' VNĐ</option>'
+                            html += '<div class="mbsc-timegrid-cell mbsc-disabled"><div><label class="mbsc-timegrid-item mbsc-disabled time-item" for="timepicker'+i+'">'+ val.time_AM +'</label><input class="radio-timepicker" name="timepicker" id="timepicker'+i+'" type="radio" value="'+ val.time_id +'"></div></div>';
                         }
+                        i++;
                     });
-                    $(".bookingtime").html(html);
+                    $('.timepicker').append(html);
+                    $('.time-item').click(function(){
+                        $('.time-item').each(function(){
+                            $(this).removeClass('active')
+                        })
+                        $(this).addClass('active');
+                    }) 
                 }
             });
     }
@@ -272,14 +264,14 @@
     $('select').select2({ });
     // 
     $('[data-fancybox]').fancybox({
-    buttons : [
-        'close'
-    ],
-    wheel : false,
-    transitionEffect: "slide",
-    loop            : true,
-    toolbar         : false,
-    clickContent    : false
+        buttons : [
+            'close'
+        ],
+        wheel : false,
+        transitionEffect: "slide",
+        loop            : true,
+        toolbar         : false,
+        clickContent    : false
     });
     $('.waves-effects').click(function(){
         return false;

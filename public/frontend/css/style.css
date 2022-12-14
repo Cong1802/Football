@@ -5024,4 +5024,60 @@ body
 {
     border-right:1px solid #ccc
 }
-  
+.timepicker
+{
+    display: flex;
+    flex-flow: column;
+    height: 428px;
+    overflow-y:scroll;
+    padding-right: 5px;
+} 
+.timepicker::-webkit-scrollbar
+{
+    width: 10px;
+}
+.timepicker .mbsc-timegrid-cell:last-child .time-item
+{
+    margin-bottom: 1px !important;
+}
+.timepicker::-webkit-scrollbar-thumb
+{
+    background-color: #44a0ff;
+    color:#fff;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.time-item
+{
+    width: 100%;
+    padding: 9px 0;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #44a0ff;
+    border-radius: 0.25rem;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    border: 1px solid #44a0ff;
+}
+.time-item:hover
+{
+    background: #44a0ff;
+    color: #fff;
+    transition:0.2s ease-in-out
+}
+#demo-timegrid
+{
+    opacity: 0 !important;
+}
+.mbsc-ios.mbsc-datepicker-inline {
+    padding: 0 !important;
+}
+.radio-timepicker
+{
+    display: none;
+}
+.time-item.active
+{
+    background: #44a0ff;
+    color: #fff;
+}
