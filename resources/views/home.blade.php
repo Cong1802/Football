@@ -1,9 +1,9 @@
 @extends('layout')
 @section('main_content')
     <!--========================= FLEX SLIDER =====================-->
-    <section class="container py-5">
+    <section class="container mb-5">
       <div class="tab-content">
-        <div class="meta pb-5">
+        <div class="meta py-sm-5 py-4">
           <div class="container">
            <div class="text-center text-lg-left d-md-block">
             <h4 class="display-5 font-weight-bold text-shadow">
@@ -12,7 +12,7 @@
           </div>
           <div class="mb-2">
             <h6 class="text-left">Tham gia cùng <strong class="text-secondary" id="user_count" number="91370">91370</strong> người chơi khác ngay!</h6>
-            <div class="d-flex">
+            <div class="d-flex contact-app">
               <a href="https://bit.ly/sporta-cap-keo-tim-doi"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-appstore-0ac658e90248e413db2bdc584e50b25b06a8229f6a74efb816b93194d0491829.svg"></a>
               <a href="https://bit.ly/sporta-timdoi-android"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-googleplaystore-18c9b8d2140c5ad8657c670f05036c5a62760da182f1d8cbe8c40c467c7f2b4b.svg"></a>
             </div>
@@ -24,9 +24,9 @@
               <form action="{{URL::to('/search')}}" onsubmit="return false" autocomplete="off" method="POST">
                {{csrf_field()}}
                   <div class="row">
-                      <div class="col-xs-12 d-flex justify-content-between col-sm-12 col-md-12">
+                      <div class="col-xs-12 d-sm-flex d-block justify-content-between col-sm-12 col-md-12">
                           <div class="left-icon input-search">
-                              <input type="text" class="form-control" name="keywords_submit" placeholder="Tìm kiếm quận huyện hoặc tên sân bóng">
+                              <input type="text" class="" name="keywords_submit" placeholder="Tìm kiếm quận huyện hoặc tên sân bóng">
                           </div>
                           <div class="left-icon select2-search-div">
                             <select onchange="change_address(this,'districts','ajaxGetListDistricts','Quận/ huyện','1')" id="select_city" name="pitch_city" class="form-control">
@@ -41,7 +41,7 @@
                               <option disabled selected>Quận/ huyện</option>
                             </select>
                           </div>
-                          <button type="submit" name="btn-search" class="btn btn-orange">Tìm kiếm</button>
+                          <button type="submit" name="btn-search" class="btn btn-hover btn-page">Tìm kiếm</button>
                       </div>
                   </div>
                   <!-- end row -->
@@ -53,7 +53,7 @@
     <div class="banner container">
       <img src="https://xuanlongfc.com/images/background/background-image.jpeg">
     </div>
-    <section class="py-5 bg-gray-100 container ">
+    <section class="pt-5 bg-gray-100 container ">
         <div class="shadown py-5">
           <div class="text-center pb-lg-4">
             <h3 class="font-weight-bold text-shadow">Tại sao lại cần 28Sport</h3>
@@ -127,8 +127,12 @@
             slidesPerView: 1,
             spaceBetween: 10,
           },
-          "@0.75": {
+          "@0.50": {
             slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          "@0.75": {
+            slidesPerView: 3,
             spaceBetween: 20,
           },
           "@1.00": {

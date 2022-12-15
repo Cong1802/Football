@@ -5,7 +5,7 @@
        <section style="background-image: url(&quot;https://www.sporta.vn/assets/default_venue_0-be9661c93168f3e7e041490927476f582d3f441c4a8f1e57bce38c077b8a3e3c.jpg&quot;); background-position: bottom; background-size: cover;" class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover">
         <div class="container overlay-content">
           <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end container">
-            <div class="text-white mb-4 mb-lg-0">
+            <div class="text-white mb-sm-4 mb-0 mb-lg-0">
               <h1 class="text-shadow verified text-left orange-text">{{ $pitch->pitch_name }}</h1>
               <p class="mb-1"><ion-icon name="location-outline"></ion-icon>{{ $pitch->pitch_address.', '.street($pitch->pitch_street)->_name.', '.ward($pitch->pitch_ward)->_name.', '.district($pitch->pitch_district)->_name.', '.city($pitch->pitch_city)->cit_name}}</p>
               <p class="mb-1 d-flex align-items-center">

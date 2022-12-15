@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>                        
                     </button>
                     <a href="{{URL::to('/')}}" class="navbar-brand d-flex p-0 align-items-center">
-                        <img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/300942774_1541831132900718_2040217408804123659_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UAqiLYVj4RIAX9PYi-5&_nc_ht=scontent.fhan17-1.fna&oh=00_AfA-h_z8NHkot7_ZfYHyHa_tQjhWKylEWsI9Xu5ggEGS8A&oe=639ACE1F" style="height: 70px"> &nbsp;
+                        <img src="{{ asset('public/frontend/images/logo.jpg') }}" style="height: 70px"> &nbsp;
                         <section class="wrapper">
                             <div class="top text-shadow">Sport</div>
                             <div class="bottom text-shadow" aria-hidden="true">Sport</div>
@@ -112,11 +112,13 @@
         @yield('main_content')
         <!--======================= FOOTER =======================-->
         <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
-            <div id="footer-top" class="p-5 ftr-top-grey ftr-text-white">
+            <div id="footer-top" class="p-2 p-md-5 ftr-top-grey ftr-text-white">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 footer-widget ftr-about">
-                            <img src="https://theanh28.vn/data/assets/logo/logo-web281.png">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-widget ftr-about p-5">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://theanh28.vn/data/assets/logo/logo-web281.png">
+                            </div>
                             <ul class="social-links list-inline justify-content-center d-flex list-unstyled">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -124,7 +126,7 @@
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 footer-widget ftr-links">
+                        <div class="col-xs-12 col-sm-4 my-4 my-sm-0 col-md-2 col-lg-2 footer-widget ftr-links">
                             <h3 class="footer-heading">TRANG</h3>
                             <ul class="list-unstyled">
                                 <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
@@ -134,7 +136,7 @@
                                 <li><a href="{{URL::to('/404')}}">404 Page</a></li>
                             </ul>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
+                        <div class="col-xs-12 col-sm-4 my-4 my-sm-0 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
                             <h3 class="footer-heading">CHỨC NĂNG</h3>
                             <ul class="list-unstyled">
                                 <li><a href="{{URL::to('/introduce')}}">Giới thiệu</a></li>
@@ -145,7 +147,7 @@
                             </ul>
                         </div>
 
-                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-contact">
+                        <div class="col-xs-12 col-sm-4 my-4 my-sm-0 col-md-3 col-lg-3 footer-widget ftr-contact">
                             <h3 class="footer-heading">LIÊN HỆ</h3>
                             <ul class="list-unstyled">
                                 <li><ion-icon name="location-sharp"></ion-icon> Luxury park view</li>
@@ -156,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <div id="footer-bottom">
+            <div id="footer-bottom" class="mt-5 mt-md-0">
                 <div class="container">
                     <div class="row d-flex justify-content-center">
                         <div class=" py-2" id="copyright">

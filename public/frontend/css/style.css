@@ -4802,7 +4802,7 @@ label.error
 }
 .select2-search-div
 {
-    width: 250px;
+    width: 245px;
 }
 ul
 {
@@ -4852,10 +4852,6 @@ ul
     border-radius: 2px !important;
     will-change: border-color,box-shadow,background-color;
     transition: border-color .3s ease-in-out,box-shadow .3s ease-in-out,background-color .3s ease-in-out;
-}
-.meta img
-{
-    width: fit-content !important;
 }
 .text-shadow {
     text-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
@@ -5125,4 +5121,54 @@ input[type="number"]::-webkit-inner-spin-button {
 .page404 a:hover
 {
    box-shadow:0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15)
+}
+.meta a img
+{
+    height: 100%;
+}
+.input-search input
+{
+    height: 100%;
+    outline: unset;
+}
+#footer .ftr-about img
+{
+    width: 100%;
+}
+.main-navbar .nav>li>a {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px 13px;
+}
+#footer .ftr-about img {
+    max-width: 250px;
+}
+.btn-page {
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}
+.btn-hover {
+    color: #fff !important;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    margin-left: 10px;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
 }

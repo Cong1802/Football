@@ -7,9 +7,9 @@
       </div>
       <span class="animate-border mr-auto ml-auto mb-4"></span>
     </div>
-    <div class="row justify-content-around my-5">
-      <div class="col-md-6">
-        <div class="contact-us-form shadown py-5">
+    <div class="d-flex container flex-column-reverse flex-md-row justify-content-around my-5">
+      <div class="col-md-6 col-12 my-5 my-md-0 shadown">
+        <div class="contact-us-form py-5">
           <form action="" method="POST" class="contact-us-form">
             <input type="hidden" name="_token" value="IBZknaWGNhXgQ25Nn4OWpND7qrZqQTWexQ6QKCQD">									<div class="form-row">
               <div class="col-6">
@@ -53,12 +53,12 @@
           </form>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-lg-5 col-md-6 col-12">
         <div class="contact-us-content">
           <h2>Tìm kiếm những sân bóng tốt</h2>
           <p>Giá cả hợp lý, phục vụ tận tình, dịch vụ tiện nghi.</p>
           <a href="" class="btn outline-btn align-items-center">Tìm hiểu thêm<span class="ti-arrow-right pl-2"></span></a>
-          <hr class="my-5">
+          <hr class="my-lg-5 my-3">
 
           <h5>Trụ sở của chúng tôi</h5>
           <address>

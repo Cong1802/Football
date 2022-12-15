@@ -13,7 +13,7 @@
             </div>
             <div class="mb-2">
               <h6 class="text-left">Tham gia cùng <strong class="text-secondary" id="user_count" number="91370">91370</strong> người chơi khác ngay!</h6>
-              <div class="d-flex">
+              <div class="d-flex contact-app">
                 <a href="https://bit.ly/sporta-cap-keo-tim-doi"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-appstore-0ac658e90248e413db2bdc584e50b25b06a8229f6a74efb816b93194d0491829.svg"></a>
                 <a href="https://bit.ly/sporta-timdoi-android"><img style="width: 170px" src="https://www.sporta.vn/assets/icon-googleplaystore-18c9b8d2140c5ad8657c670f05036c5a62760da182f1d8cbe8c40c467c7f2b4b.svg"></a>
               </div>
@@ -40,8 +40,8 @@
                     <div class="d-flex justify-content-center">
                         <div class="shadown col-md-6 col-12 my-4">
                             <div class="">
-                                <h4 class="display-5 text-center font-weight-bold text-shadow mt-4">Thông tin đặt sân</h4>
-                                <span class="animate-border mr-auto ml-auto mb-4"></span>
+                                <h4 class="display-5 text-center font-weight-bold text-shadow mt-md-4 mt-0">Thông tin đặt sân</h4>
+                                <span class="animate-border mr-auto ml-auto mb-md-4 mb-0"></span>
                                   <div class="text-block">
                                     <div class="form-group">
                                       <label for="name"><h6>Tên</h6></label>
@@ -79,7 +79,7 @@
             <li class="step">
                 <div class="step-title waves-effects waves-dark">Step 2</div>
                 <div class="step-content">
-                    <div class="d-flex shadown mb-4">
+                    <div class="d-md-flex d-block shadown mb-4">
                         <div class="col-xs-12 col-sm-12 border-right col-md-6 col-lg-6 ">
                             <div>
                                 <div class="text-block">
@@ -147,15 +147,15 @@
                 <div class="step-title waves-effects waves-dark">Step 3</div>
                 <div class="step-content">
                     <div class="d-flex flex-column">
-                        <div class="step-actions justify-content-end">
+                        <div class="step-actions mb-lg-0 mb-4 justify-content-end">
                             <button class="waves-effect waves-dark btn next-step" data-validator="validateStepThree">SUBMIT</button>
                             <button class="waves-effect waves-dark btn-flat previous-step">Trở lại</button>
                         </div>
-                        <div class="d-flex">
-                            <div class="datepicker col-8">
-                                <input readonly type="text" onchange="select_timeslot()" name="booker_date" class="form-control mt-3" id="demo-timegrid">
+                        <div class="d-md-flex d-block flex-start">
+                            <div class="datepicker col-md-8 col-12">
+                                <input readonly type="hidden" onchange="select_timeslot()" name="booker_date" class="form-control mt-3" id="demo-timegrid">
                             </div>
-                            <div class="mbsc-ios mbsc-datepicker-inline mt-3 col-4">
+                            <div class="mbsc-ios mbsc-datepicker-inline mt-3 col-md-4 col-12">
                                 <div class="timepicker"></div>
                             </div>
                         </div>

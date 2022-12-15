@@ -35,7 +35,7 @@
     <section class="innerpage-wrapper">
         <div id="team-listing" class="innerpage-section-padding">
             <div class="container">
-                <div class="d-flex mb-5">
+                <div class="d-md-flex d-block mb-5">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 content-side">
                     <?php $i=1; ?>
                     @if(count($booking_history) > 0)
@@ -126,7 +126,7 @@
                     @endif
                     </div>
                     <!-- end columns -->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 p-4 side-bar blog-sidebar right-side-bar">
+                    <div class="col-xs-12 col-sm-12 mt-4 mt-md-0 d-none d-md-block col-md-4 col-lg-4 p-4 side-bar blog-sidebar right-side-bar">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-12">
                                 <div class="side-bar-block contact">
