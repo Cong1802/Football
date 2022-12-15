@@ -57,17 +57,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="user_phone" value="{{ old('phone') }}" placeholder="Phone" required autocomplete="phone">
-
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <span><i class="fa fa-envelope"></i></span>
-                                    </div>
-
-                                    <div class="form-group">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
                                         @error('password')

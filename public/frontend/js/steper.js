@@ -3,9 +3,9 @@ $(document).ready(function() {
   })
   
   function validateStepOne() {
-    var booker_name = $('input[name="booker_name"]').val();
-    var booker_phone = $('input[name="booker_phone"]').val();
-    if(booker_name !='' && booker_phone !='')
+    var booker_name = $('input[name="booker_name"]').valid();
+    var booker_phone = $('input[name="booker_phone"]').valid();
+    if(booker_name && booker_phone)
    {
       return true;
    }
@@ -14,13 +14,50 @@ $(document).ready(function() {
       return false;
    }
   }
+
+  function validateStepTwo() {
+   var result = true;
+   var count = 0;
+      $('select').each(function(){
+         if($(this).val() > 0)
+         {
+            result = true;
+            count++;
+         }
+         else
+         {
+            $(this).parents('.box_input_infor').addClass('error');
+         }
+      })
+
+      if(count == 2)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
   function validateStepThree() {
-    var validation = true;
-    var type = $('select[name="type"]').val();
-    var pitch_type = $('select[name="pitch_type"]').val();
-    if(type == null && pitch_type == null )
-      validation = false;
-    return validation;
+      var check = 0;
+      $('input[name="timepicker"]').each(function(){
+         if($(this).is(':checked'))
+         {
+            check = 1;
+         }
+      })
+      if(check == 0)
+      {
+         swal({
+            text: "Vui lòng chọn khung giờ đặt sân",
+            icon: "warning",
+         });
+      }
+      else
+      {
+         $("#BookingPost").submit();
+      }
   }
   function nextStepThreeHandler() {
     if(validateStepThree() == true)

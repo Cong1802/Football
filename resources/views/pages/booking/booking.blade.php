@@ -49,11 +49,11 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="phone"><h6>Số điện thoại</h6></label>
-                                      <input id="phone" name="booker_phone" value="{{ Auth::guard('web')->user()->phone }}" type="text" class="form-control" required placeholder="Nhập số điện thoại...">
+                                      <input id="phone" name="booker_phone" value="{{ Auth::guard('web')->user()->phone }}" type="number" class="form-control" required placeholder="Nhập số điện thoại...">
                                     </div>
                                     <div class="form-group">
                                         <label for="email"><h6>Email</h6></label>
-                                        <input id='email' name="booker_phone" value="{{ Auth::guard('web')->user()->email }}" type="text" class="form-control" required placeholder="Nhập số điện thoại...">
+                                        <input id='email' name="booker_mail" value="{{ Auth::guard('web')->user()->email }}" type="email" class="form-control" required placeholder="Nhập số điện thoại...">
                                       </div>
                                   </div>
                                   <div class="text-block">
@@ -120,7 +120,7 @@
                                 <input type="text" value="{{ $pitch->pitch_name }}" class="input-custom" disabled>
                                 <input type="hidden" value="{{ $pitch->pitch_id }}" name="pitch" class="input-custom">
                             </div>   
-                            <div class="form-group right-icon box_input_infor">
+                            <div class="form-group right-icon box_input_infor d-flex flex-column">
                                 <label class="heading-text" for="field_type">Loại sân <small class="text-danger">*</small></label>
                                 <select onchange='select_pitch_type(this);select_timeslot()' class="pitch_type_id" name="booker_type" class="input-custom">
                                     <option selected disabled>Chọn loại sân</option>
@@ -129,7 +129,7 @@
                                     <?php endforeach ?>
                                 </select>                                                      
                             </div>   
-                            <div class="form-group right-icon box_input_infor">
+                            <div class="form-group right-icon box_input_infor d-flex flex-column">
                                 <label class="heading-text" for="field_type">Sân bóng <small class="text-danger">*</small></label>
                                 <select onchange = 'select_timeslot()' required class="pitch_type" name="booker_pitch_type" class="input-custom">
                                     <option selected disabled>Chọn sân bóng</option>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                 <div class="step-actions justify-content-end">
-                    <button class="waves-effect waves-dark btn next-step">CONTINUE</button>
+                    <button class="waves-effect waves-dark btn next-step" data-validator="validateStepTwo">CONTINUE</button>
                     <button class="waves-effect waves-dark btn-flat previous-step">Trở lại</button>
                 </div>
                 </div>
@@ -148,7 +148,7 @@
                 <div class="step-content">
                     <div class="d-flex flex-column">
                         <div class="step-actions justify-content-end">
-                            <button type="submit" class="btn">Đặt sân</button>
+                            <button class="waves-effect waves-dark btn next-step" data-validator="validateStepThree">SUBMIT</button>
                             <button class="waves-effect waves-dark btn-flat previous-step">Trở lại</button>
                         </div>
                         <div class="d-flex">
@@ -170,9 +170,9 @@
 @push('js')
   <script src="{{ asset('public/frontend/js/steper.js') }}"></script>
   <script src="{{ asset('public/frontend/js/mobiscroll.jquery.min.js') }}"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   <script>
-        
     mobiscroll.setOptions({
         locale: mobiscroll.localeEn,
         theme: 'ios',

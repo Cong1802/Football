@@ -38,6 +38,7 @@
                 <div class="d-flex mb-5">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 content-side">
                     <?php $i=1; ?>
+                    @if(count($booking_history) > 0)
                     @foreach($booking_history as $key => $booking_history_info)
                         <div class="list-block f-list-block">
                             <div class="list-content">                           
@@ -117,6 +118,12 @@
                         <!-- end f-list-block -->
                     <?php $i++; ?>
                     @endforeach
+                    @else
+                    <div>
+                        <img src="{{ asset('public/frontend/images/error.webp') }}" style="width:100%">
+                        <h6 class="text-center">Bạn chưa có lịch sử đặt sân nào !!!</h6>
+                    </div>
+                    @endif
                     </div>
                     <!-- end columns -->
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 p-4 side-bar blog-sidebar right-side-bar">

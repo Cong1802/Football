@@ -38,7 +38,8 @@ class BookingController extends Controller
             'booking_time'=>$request->timepicker,
             'booking_time_cr'=>time(),
             'booking_status'=>0,
-            'booking_phone' => $request->booking_phone
+            'booking_phone' => $request->booker_phone,
+            'booking_mail' => $request->booker_mail
         ];
         $insert = DB::table('tbl_booking')->insert($data);
     	return redirect('/history-booking')->with('success','Tạo phiếu đặt sân thành công, sẽ có người gọi tới để xác nhận đặt sân xin chờ máy');
